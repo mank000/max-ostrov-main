@@ -1,0 +1,2168 @@
+.clips-screen {
+  position: fixed;
+  inset: 0;
+  background: #090a0c;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  isolation: isolate;
+  padding-top: var(--host-content-safe-top, env(safe-area-inset-top, 0px));
+}
+.clips-screen button {
+  border: 0;
+  font: inherit;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  background: none;
+  color: inherit;
+  min-height: 44px;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 12px;
+}
+.clips-screen button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.clips-screen button:focus-visible,
+.clips-screen input:focus-visible {
+  outline: 2px solid #70b8ff;
+  outline-offset: 2px;
+}
+.clips-header {
+  height: 54px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  z-index: 2;
+  background: #090a0c;
+}
+.clips-header > button {
+  padding: 8px;
+  min-width: 40px;
+}
+.clips-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.clips-header-actions > button {
+  min-width: 38px;
+  padding: 7px;
+}
+.clips-header nav {
+  display: flex;
+  align-items: center;
+}
+.clips-header nav button {
+  position: relative;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 10px 9px;
+  color: #a8a9af;
+  white-space: nowrap;
+}
+.clips-header nav button[aria-current] {
+  color: #fff;
+}
+.clip-tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  margin-left: 2px;
+  border-radius: 9px;
+  background: #ff3b5f;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1;
+}
+.clips-header nav button[aria-current]:after {
+  content: '';
+  height: 3px;
+  border-radius: 3px;
+  background: #fff;
+  position: absolute;
+  bottom: 1px;
+  left: 25%;
+  right: 25%;
+}
+.clip-author-title {
+  font-size: 14px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.clips-feed {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+  position: relative;
+  touch-action: pan-y;
+}
+.clips-feed::-webkit-scrollbar {
+  display: none;
+}
+.clip-card {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  scroll-snap-align: start;
+  scroll-snap-stop: normal;
+  overflow: hidden;
+  background: #090a0c;
+}
+.clip-card > video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+.clip-play-area {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 !important;
+  touch-action: pan-y;
+}
+.clip-play-state {
+  padding: 15px 22px;
+  background: #111c;
+  border-radius: 24px;
+  font-size: 24px;
+}
+.clip-sound {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  width: 36px;
+  height: 36px;
+  min-height: 36px !important;
+  min-width: 36px;
+  padding: 0 !important;
+  border-radius: 50% !important;
+  background: #1119 !important;
+  backdrop-filter: blur(8px);
+  filter: drop-shadow(0 1px 3px #0007);
+}
+.clip-sound.is-muted::after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 1.5px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: rotate(-45deg);
+}
+.clip-actions {
+  position: absolute;
+  right: 8px;
+  bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 13px;
+}
+.clip-actions > button {
+  min-width: 48px;
+  padding: 3px 5px;
+  flex-direction: column;
+  gap: 3px;
+  filter: drop-shadow(0 1px 3px #0008);
+}
+.clip-actions small {
+  font-size: 10px;
+  font-weight: 650;
+  max-width: 56px;
+  line-height: 1;
+}
+.clip-actions .is-liked {
+  color: #ff5572;
+}
+
+.clip-description {
+  position: absolute;
+  left: 14px;
+  bottom: 28px;
+  right: 76px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+  pointer-events: none;
+  text-shadow: 0 1px 4px #000, 0 1px 12px #0008;
+}
+.clip-description > * {
+  pointer-events: auto;
+}
+.clip-author {
+  font-size: 15px !important;
+  font-weight: 700 !important;
+  min-height: 24px !important;
+  padding: 0 !important;
+  justify-content: flex-start !important;
+  max-width: 100%;
+  word-break: break-word;
+}
+.clip-caption-wrap {
+  max-width: min(100%, 430px);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.clip-caption {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  white-space: pre-wrap;
+}
+.clip-caption.is-expanded {
+  display: block;
+  -webkit-line-clamp: unset;
+  max-height: 30vh;
+  overflow-y: auto;
+}
+.clips-screen .clip-caption-toggle {
+  display: inline-flex;
+  width: auto;
+  min-height: 24px;
+  padding: 2px 0;
+  margin-top: 1px;
+  border-radius: 0;
+  font-size: 12px;
+  font-weight: 650;
+  color: #fff;
+  opacity: 0.78;
+}
+.clip-city {
+  font-size: 11px;
+  color: #d4d5d9;
+}
+.clip-sent-by {
+  font-size: 11px;
+  max-width: 100%;
+}
+.clip-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: #ffffff2b;
+  z-index: 2;
+  overflow: hidden;
+}
+.clip-progress > span {
+  display: block;
+  height: 100%;
+  background: #fff;
+  transition: width 120ms linear;
+}
+.clips-footer {
+  height: calc(62px + env(safe-area-inset-bottom, 0px));
+  padding: 7px 14px calc(7px + env(safe-area-inset-bottom, 0px));
+  display: grid;
+  grid-template-columns: 1fr 60px 1fr;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+  background: #090a0c;
+}
+.clips-footer > span {
+  font-size: 10px;
+  line-height: 1.4;
+  max-width: 100px;
+  color: #a7a9b3;
+}
+.clips-footer > button:last-child {
+  justify-self: end;
+  font-size: 12px;
+  padding: 6px;
+}
+.clips-footer .clip-create {
+  height: 40px;
+  min-height: 40px;
+  border-radius: 13px;
+  background: #fff;
+  color: #111;
+  width: 56px;
+}
+.clips-empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 32px;
+  gap: 12px;
+}
+.clips-empty h2 {
+  font-size: 21px;
+  max-width: 300px;
+  margin: 6px 0;
+}
+.clips-empty p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: #b7bac3;
+  max-width: 300px;
+  margin: 0;
+}
+.clips-empty button {
+  background: #fff;
+  color: #121318;
+  font-weight: 600;
+  margin-top: 12px;
+}
+.clip-spinner {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #ffffff40;
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: clip-spin 0.8s linear infinite;
+}
+@keyframes clip-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.clip-page-error {
+  position: sticky;
+  bottom: 10px;
+  background: #24262e;
+  padding: 12px;
+  z-index: 3;
+  font-size: 13px;
+}
+.clip-toast {
+  position: absolute;
+  bottom: 90px;
+  left: 24px;
+  right: 24px;
+  z-index: 40;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid var(--divider);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 13px;
+  text-align: center;
+}
+.clip-sheet-hint {
+  color: var(--hint);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.clip-search {
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 12px;
+  background: var(--secondary);
+  color: var(--text);
+  font: inherit;
+  margin: 8px 0 12px;
+}
+.clip-friend {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 0;
+  min-width: 0;
+}
+.clip-friend strong {
+  font-size: 14px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.clip-friend .clip-send-button {
+  color: var(--accent-text);
+  font-size: 12px;
+  padding: 6px;
+}
+.clip-friend > button:last-child {
+  padding: 6px;
+}
+.clip-menu-item {
+  width: 100%;
+  background: var(--secondary) !important;
+  font-size: 13px !important;
+}
+.clip-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.clip-menu > button {
+  justify-content: flex-start;
+  padding: 12px 8px;
+  width: 100%;
+  border-radius: 8px;
+  text-align: left;
+}
+.clip-menu small {
+  color: var(--hint);
+  font-size: 12px;
+  margin: 0 8px 8px;
+}
+.clip-menu p {
+  color: var(--hint);
+  font-size: 14px;
+}
+.clip-danger {
+  color: var(--danger) !important;
+}
+.clip-profile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 0;
+}
+.clip-profile h2 {
+  margin-top: 8px;
+}
+.clip-profile p {
+  font-size: 14px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  margin: 0;
+  text-align: center;
+  color: var(--muted);
+}
+.clip-primary {
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  width: 100%;
+  font-weight: 600 !important;
+  min-height: 46px !important;
+  border-radius: 13px !important;
+}
+.clip-camera,
+.clip-editor {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: #090a0c;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+.clip-camera { overflow: hidden; }
+.clip-camera > video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.clip-camera-zoom {
+  position: absolute;
+  z-index: 2;
+  right: 14px;
+  bottom: 135px;
+  display: grid;
+  gap: 4px;
+  color: white;
+  font-size: 13px;
+  text-shadow: 0 1px 3px #000;
+}
+.clip-camera-zoom input { width: 130px; accent-color: white; }
+.clip-camera > video.is-mirrored {
+  transform: scaleX(-1);
+}
+.clip-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  background: #1118;
+  font-size: 14px;
+}
+.clip-top button {
+  font-size: 28px;
+}
+.clip-camera-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 22px 12px calc(24px + env(safe-area-inset-bottom, 0px));
+  background: #111b;
+  font-size: 12px;
+}
+.clip-camera-controls > span {
+  width: 90px;
+  text-align: center;
+}
+.clip-record {
+  border: 3px solid #fff !important;
+  border-radius: 50% !important;
+  width: 76px;
+  height: 76px;
+  padding: 5px !important;
+}
+.clip-record span {
+  width: 58px;
+  height: 58px;
+  background: #ff4c64;
+  border-radius: 50%;
+  transition:
+    border-radius 0.15s,
+    transform 0.15s;
+}
+.clip-record.is-recording span {
+  border-radius: 8px;
+  transform: scale(0.6);
+}
+.clip-countdown {
+  position: absolute;
+  inset: 40% 0;
+  text-align: center;
+  font-size: 72px;
+}
+.clip-camera-error {
+  position: relative;
+  margin: auto 24px;
+  background: #16171ee8;
+  padding: 24px;
+  border-radius: 18px;
+  line-height: 1.6;
+  text-align: center;
+}
+.clip-camera-error button {
+  display: flex;
+  background: #fff;
+  color: #111;
+  width: 100%;
+  margin-top: 20px;
+}
+.clip-editor {
+  background: var(--primary);
+  color: var(--text);
+}
+.clip-editor-header {
+  height: 58px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 14px;
+  flex-shrink: 0;
+  border-bottom: 1px solid var(--divider);
+}
+.clip-editor-header strong {
+  font-size: 16px;
+}
+.clip-editor-header > span {
+  font-size: 12px;
+  color: var(--hint);
+}
+.clip-editor-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 14px 18px;
+}
+.clip-editor-preview {
+  position: relative;
+  height: 32vh;
+  max-height: 300px;
+  min-height: 160px;
+  background: #0c0d10;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
+}
+.clip-editor-preview video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.clip-editor-preview.is-portrait {
+  aspect-ratio: 480/854;
+  width: auto;
+  margin: auto;
+  max-width: 100%;
+}
+.clip-editor-preview.is-portrait video {
+  object-fit: cover;
+}
+.clip-editor-tools {
+  border: 0;
+  padding: 0;
+  margin: 14px 0;
+}
+.clip-tool-row {
+  display: flex;
+  gap: 6px;
+  justify-content: space-between;
+}
+.clip-tool-row button {
+  background: var(--secondary);
+  font-size: 11px;
+  padding: 6px 9px;
+  flex: 1;
+  white-space: nowrap;
+  min-height: 38px;
+}
+.clip-tool-row button[aria-pressed='true'] {
+  color: var(--accent-text);
+  background: var(--accent-soft);
+}
+.clip-trim-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  font-size: 13px;
+  margin: 20px 0 10px;
+}
+.clip-trim-title > div {
+  display: grid;
+  gap: 3px;
+}
+.clip-trim-title small {
+  color: var(--hint);
+  font-size: 11px;
+  font-weight: 450;
+  line-height: 1.35;
+}
+.clip-trim-title > span {
+  flex: none;
+  color: var(--hint);
+  font-variant-numeric: tabular-nums;
+}
+.clip-trim-control {
+  position: relative;
+  height: 62px;
+  border-radius: 11px;
+  overflow: hidden;
+  background: #101114;
+  box-shadow: inset 0 0 0 1px var(--divider);
+}
+.clip-filmstrip {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+  gap: 1px;
+  margin: 0;
+  background: var(--secondary);
+}
+.clip-filmstrip img {
+  min-width: 0;
+  flex: 1;
+  object-fit: cover;
+}
+.clip-trim-mask {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  background: #0009;
+  pointer-events: none;
+}
+.clip-trim-mask--before { left: 0; }
+.clip-trim-mask--after { right: 0; }
+.clip-trim-selection {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  border-top: 3px solid var(--accent);
+  border-bottom: 3px solid var(--accent);
+  pointer-events: none;
+}
+.clip-trim-selection::before,
+.clip-trim-selection::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  width: 8px;
+  background: var(--accent);
+}
+.clip-trim-selection::before {
+  left: 0;
+  border-radius: 5px 0 0 5px;
+}
+.clip-trim-selection::after {
+  right: 0;
+  border-radius: 0 5px 5px 0;
+}
+.clip-trim-range {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  appearance: none;
+  background: transparent;
+  pointer-events: none;
+}
+.clip-trim-range::-webkit-slider-runnable-track {
+  height: 100%;
+  background: transparent;
+}
+.clip-trim-range::-moz-range-track {
+  height: 100%;
+  background: transparent;
+}
+.clip-trim-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 24px;
+  height: 62px;
+  border: 0;
+  background: transparent;
+  pointer-events: auto;
+  cursor: ew-resize;
+}
+.clip-trim-range::-moz-range-thumb {
+  width: 24px;
+  height: 62px;
+  border: 0;
+  background: transparent;
+  pointer-events: auto;
+  cursor: ew-resize;
+}
+.clip-trim-values {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 8px 0 2px;
+}
+.clip-trim-values span {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  color: var(--hint);
+  font-variant-numeric: tabular-nums;
+}
+.clip-trim-values small {
+  font-size: 10px;
+}
+.clip-trim-values strong {
+  color: var(--text);
+  font-size: 12px;
+}
+.clip-editor-tools label {
+  font-size: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 8px 0;
+  color: var(--muted);
+}
+.clip-editor-tools output {
+  font-variant-numeric: tabular-nums;
+}
+.clip-editor-tools input[type='range'] {
+  width: 100%;
+  height: 28px;
+  margin: 0;
+  accent-color: var(--accent);
+}
+.clip-editor-tools input.clip-trim-range {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  accent-color: transparent;
+}
+.clip-caption-label {
+  font-size: 13px;
+  display: block;
+  font-weight: 600;
+}
+.clip-caption-label textarea {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  resize: vertical;
+  padding: 12px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--secondary);
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.4;
+  min-height: 64px;
+}
+.clip-editor-hint {
+  font-size: 11px;
+  color: var(--hint);
+  line-height: 1.5;
+  margin: 12px 0;
+}
+.clip-editor-footer {
+  flex-shrink: 0;
+  padding: 12px 18px calc(12px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--divider);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+  background: var(--primary);
+}
+.clip-editor-footer progress {
+  width: 100%;
+  height: 5px;
+  accent-color: var(--accent);
+}
+.clip-editor-footer > span {
+  flex: 1;
+}
+.clip-editor-footer > button:not(.clip-primary) {
+  color: var(--accent-text);
+  min-height: 30px;
+}
+.clip-error {
+  color: var(--danger);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.clip-dialog-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 11;
+  background: #0008;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.clip-dialog {
+  background: var(--card);
+  color: var(--text);
+  border-radius: 20px;
+  padding: 24px;
+  width: 100%;
+  max-width: 360px;
+}
+.clip-dialog h3 {
+  margin: 0 0 12px;
+}
+.clip-dialog p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.clip-dialog > button {
+  width: 100%;
+  margin-top: 6px;
+}
+.clip-discard-actions {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+.clip-editor .ui-sheet .clip-dialog-continue {
+  min-height: 48px !important;
+  background: #087ff5 !important;
+  color: #fff !important;
+  box-shadow: 0 8px 20px #087ff533;
+}
+.clip-editor .ui-sheet .clip-discard-close {
+  justify-self: start;
+  width: auto;
+  min-height: 36px;
+  padding: 6px 2px;
+  color: var(--danger);
+  font-size: 13px;
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+@media (min-width: 700px) {
+  .clips-screen {
+    max-width: 520px;
+    margin: auto;
+    border-left: 1px solid #24262d;
+    border-right: 1px solid #24262d;
+  }
+  .clip-editor-preview {
+    height: 30vh;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .clips-screen * {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+  .clip-spinner {
+    animation: none;
+  }
+}
+
+dialog.clip-editor,
+dialog.clip-camera {
+  margin: auto;
+  border: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 520px;
+  max-height: none;
+  padding: 0;
+  padding-top: env(safe-area-inset-top, 0px);
+}
+dialog.clip-editor:not([open]),
+dialog.clip-camera:not([open]) {
+  display: none;
+}
+
+.clip-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3px;
+  width: 100%;
+  margin: 12px 0;
+}
+.clip-profile-grid .clip-cover {
+  position: relative;
+  aspect-ratio: 3/4;
+  width: 100%;
+  background: var(--secondary);
+  overflow: hidden;
+  padding: 0;
+  border-radius: 5px;
+}
+.clip-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.clip-cover span {
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  background: #111b;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 10px;
+  padding: 3px 5px;
+}
+
+.clip-avatar-action {
+  position: relative;
+  margin-bottom: 12px;
+  width: 48px;
+  height: 48px;
+}
+.clip-avatar-action > button:first-child {
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+.clip-actions .clip-follow {
+  position: absolute;
+  bottom: -22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 44px;
+  height: 44px;
+  padding: 9px;
+  z-index: 1;
+  border: 0;
+  background: none;
+  min-height: 44px;
+  min-width: 44px;
+}
+.clip-follow-disc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  border: 2px solid #fff;
+}
+.clip-profile-stats {
+  display: flex;
+  gap: 24px;
+  font-size: 12px;
+  color: var(--hint);
+  margin: 8px;
+}
+.clip-profile-stats strong {
+  display: block;
+  text-align: center;
+  font-size: 19px;
+  color: var(--text);
+}
+.clip-unfollow {
+  background: var(--secondary) !important;
+  width: 100%;
+  color: var(--text) !important;
+}
+
+.clips-screen {
+  height: var(--app-viewport-height, 100dvh);
+  bottom: auto;
+}
+dialog.clip-editor,
+dialog.clip-camera {
+  height: var(--app-viewport-height, 100dvh);
+  bottom: auto;
+}
+
+.clip-editor .clip-preview-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 58px;
+  height: 58px;
+  min-height: 58px;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  color: white;
+  background: #0009;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 8px 26px #0005;
+}
+.clip-preview-play-icon {
+  display: block;
+  font-size: 23px;
+  line-height: 1;
+  transform: translateX(1px);
+}
+
+
+/* Reels comments: one social discussion surface, backed by the shared post/comment API. */
+.clip-comments-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  background: #0007;
+}
+.clip-comments-panel {
+  position: relative;
+  width: 100%;
+  max-height: min(78dvh, 760px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background: var(--primary);
+  color: var(--text);
+  border: 1px solid var(--divider);
+  border-bottom: 0;
+  border-radius: 22px 22px 0 0;
+  box-shadow: 0 -12px 40px #0004;
+}
+.clip-comments-panel button {
+  min-height: 0;
+  padding: 0;
+  border-radius: 0;
+  color: inherit;
+  background: transparent;
+}
+.clip-comments-header {
+  position: relative;
+  min-height: 54px;
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: 36px 1fr 36px;
+  align-items: center;
+  padding: 8px 14px 6px;
+  border-bottom: 1px solid var(--divider);
+}
+.clip-comments-header strong {
+  grid-column: 2;
+  text-align: center;
+  font-size: 15px;
+}
+.clip-comments-header > button {
+  grid-column: 3;
+  width: 34px;
+  height: 34px;
+  justify-self: end;
+  font-size: 25px;
+  color: var(--muted);
+}
+.clip-comments-handle {
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  width: 34px;
+  height: 4px;
+  border-radius: 4px;
+  transform: translateX(-50%);
+  background: var(--divider);
+}
+.clip-comments-list {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 8px 0 16px;
+}
+.clip-comments-state {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 28px;
+  color: var(--muted);
+  text-align: center;
+}
+.clip-comments-state strong {
+  color: var(--text);
+}
+.clip-comments-state span {
+  max-width: 270px;
+  font-size: 13px;
+  line-height: 1.4;
+}
+.clip-comment-thread {
+  border-bottom: 1px solid color-mix(in srgb, var(--divider) 72%, transparent);
+}
+.clip-comment {
+  position: relative;
+  display: grid;
+  grid-template-columns: 38px minmax(0, 1fr);
+  gap: 9px;
+  padding: 10px 14px;
+}
+.clip-comment.is-reply {
+  grid-template-columns: 32px minmax(0, 1fr);
+  padding-left: 56px;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+.clip-comment-avatar {
+  width: 38px;
+  height: 38px;
+  align-self: start;
+}
+.clip-comment.is-reply .clip-comment-avatar {
+  width: 32px;
+  height: 32px;
+}
+.clip-comment-main {
+  min-width: 0;
+}
+.clip-comment-head {
+  min-height: 22px;
+  display: grid;
+  grid-template-columns: minmax(0, auto) 1fr 28px;
+  align-items: center;
+  gap: 7px;
+}
+.clip-comment-name {
+  max-width: 100%;
+  justify-content: flex-start !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 13px;
+  font-weight: 700;
+}
+.clip-comment-head > span {
+  font-size: 11px;
+  color: var(--hint);
+}
+.clip-comment-more {
+  width: 28px;
+  height: 28px;
+  justify-self: end;
+  color: var(--hint) !important;
+}
+.clip-comment-main > p {
+  margin: 1px 0 5px;
+  font-size: 13px;
+  line-height: 1.42;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.clip-comment-reply-target {
+  display: inline !important;
+  font-weight: 700 !important;
+  color: var(--accent-text) !important;
+}
+.clip-comment-actions-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-height: 24px;
+}
+.clip-comment-actions-row > button {
+  min-height: 24px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--hint);
+}
+.clip-comment-actions-row .is-liked {
+  color: #ff5572;
+}
+.clip-comment-menu {
+  position: absolute;
+  top: 38px;
+  right: 14px;
+  z-index: 4;
+  min-width: 140px;
+  overflow: hidden;
+  border: 1px solid var(--divider);
+  border-radius: 13px;
+  background: var(--card);
+  box-shadow: 0 10px 32px #0003;
+}
+.clip-comment-menu > button {
+  width: 100%;
+  min-height: 38px;
+  padding: 0 13px;
+  justify-content: flex-start;
+  font-size: 12px;
+  border-bottom: 1px solid var(--divider);
+}
+.clip-comment-menu > button:last-child {
+  border-bottom: 0;
+}
+.clip-comment-menu .is-danger,
+.clip-comment-delete-confirm .is-danger {
+  color: var(--danger);
+}
+.clip-comment-edit {
+  display: grid;
+  gap: 7px;
+  margin: 4px 0;
+}
+.clip-comment-edit textarea {
+  width: 100%;
+  min-height: 70px;
+  resize: vertical;
+  border: 1px solid var(--divider);
+  border-radius: 10px;
+  padding: 9px 10px;
+  background: var(--secondary);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+}
+.clip-comment-edit > div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+.clip-comment-edit button {
+  min-height: 28px;
+  font-size: 12px;
+  color: var(--accent-text);
+}
+.clip-comment-delete-confirm {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 5px 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+.clip-comment-delete-confirm span {
+  flex: 1;
+}
+.clip-comment-delete-confirm button {
+  min-height: 28px;
+  font-size: 11px;
+  font-weight: 650;
+}
+.clip-comment-media {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  margin: 6px 0;
+  max-width: 320px;
+}
+.clip-comment-media img,
+.clip-comment-media video {
+  width: 100%;
+  max-height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #111;
+}
+.clip-comment-show-replies {
+  margin: 0 14px 8px 96px;
+  min-height: 30px !important;
+  font-size: 11px;
+  font-weight: 650;
+  color: var(--hint) !important;
+}
+.clip-comments-load-more {
+  display: flex !important;
+  margin: 12px auto 2px;
+  min-height: 34px !important;
+  padding: 0 14px !important;
+  border-radius: 17px !important;
+  font-size: 12px;
+  color: var(--accent-text) !important;
+  background: var(--secondary) !important;
+}
+.clip-comment-composer {
+  flex: 0 0 auto;
+  padding: 8px 12px calc(9px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--divider);
+  background: var(--primary);
+}
+.clip-comment-replying {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 4px 7px;
+  color: var(--hint);
+  font-size: 11px;
+}
+.clip-comment-replying span {
+  flex: 1;
+}
+.clip-comment-replying button {
+  width: 26px;
+  height: 26px;
+  font-size: 20px;
+}
+.clip-comment-input-row {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) 38px;
+  align-items: center;
+  gap: 7px;
+}
+.clip-comment-attach {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  color: var(--muted);
+  cursor: pointer;
+}
+.clip-comment-attach.is-disabled {
+  opacity: .4;
+  cursor: default;
+}
+.clip-comment-draft-media {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding: 0 0 8px;
+}
+.clip-comment-draft-item {
+  position: relative;
+  flex: 0 0 70px;
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #111;
+}
+.clip-comment-draft-item img,
+.clip-comment-draft-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.clip-comment-draft-item > button {
+  position: absolute;
+  top: 3px;
+  right: 3px;
+  width: 24px;
+  height: 24px;
+  min-height: 24px !important;
+  border-radius: 50% !important;
+  background: #000b !important;
+  color: #fff !important;
+  font-size: 17px;
+}
+.clip-comment-input-row input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--divider);
+  border-radius: 20px;
+  padding: 0 14px;
+  background: var(--secondary);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+}
+.clip-comment-input-row > button {
+  width: 38px;
+  height: 38px;
+  border-radius: 50% !important;
+  color: var(--accent-text);
+}
+.clip-comment-input-row > button:disabled {
+  opacity: 0.35;
+}
+.clip-comment-error {
+  padding: 7px 4px 0;
+  color: var(--danger);
+  font-size: 11px;
+  line-height: 1.35;
+}
+
+@media (min-width: 960px) {
+  .clip-comments-backdrop {
+    inset: 66px 0 0 var(--desktop-sidebar-width, 0px);
+    align-items: stretch;
+    justify-content: flex-end;
+    background: transparent;
+    pointer-events: none;
+  }
+  .clip-comments-panel {
+    width: min(420px, 38vw);
+    max-height: none;
+    height: 100%;
+    border-radius: 0;
+    border-top: 0;
+    border-right: 0;
+    box-shadow: -12px 0 42px #0003;
+    pointer-events: auto;
+  }
+  .clip-comments-handle {
+    display: none;
+  }
+}
+
+
+/* Sent clips behave like lightweight private messages: media + emoji reactions only. */
+.clips-screen.is-inbox {
+  max-width: 1120px;
+  background: var(--primary);
+  color: var(--text);
+}
+.clips-screen.is-inbox .clips-header {
+  background: var(--primary);
+  color: var(--text);
+  border-bottom: 1px solid var(--divider);
+}
+.clips-screen.is-inbox .clips-header nav button {
+  color: var(--muted);
+}
+.clips-screen.is-inbox .clips-header nav button[aria-current] {
+  color: var(--text);
+}
+.clips-screen.is-inbox .clips-header nav button[aria-current]::after {
+  background: var(--text);
+}
+
+.clip-inbox {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  overflow: hidden;
+  background: var(--primary);
+  color: var(--text);
+}
+.clip-inbox-list {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  background: var(--primary);
+}
+.clip-inbox-list-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 48px;
+  padding: 14px 16px 8px;
+}
+.clip-inbox-list-head strong {
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+.clip-inbox-list-head span {
+  color: var(--hint);
+  font-size: 11px;
+}
+.clip-inbox-conversations {
+  padding: 4px 8px 14px;
+}
+.clips-screen .clip-inbox-conversation {
+  width: 100%;
+  min-height: 70px;
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) auto;
+  justify-content: stretch;
+  gap: 11px;
+  padding: 10px 8px;
+  border-radius: 14px;
+  text-align: left;
+}
+.clips-screen .clip-inbox-conversation:hover,
+.clips-screen .clip-inbox-conversation.is-active {
+  background: var(--secondary);
+}
+.clip-inbox-conversation-copy {
+  min-width: 0;
+  display: grid;
+  align-content: center;
+  gap: 3px;
+}
+.clip-inbox-conversation-copy strong,
+.clip-inbox-conversation-copy small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.clip-inbox-conversation-copy strong {
+  font-size: 14px;
+}
+.clip-inbox-conversation-copy small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 450;
+}
+.clip-inbox-conversation-side {
+  min-width: 34px;
+  display: grid;
+  align-content: center;
+  justify-items: end;
+  gap: 7px;
+  color: var(--hint);
+  font-size: 10px;
+  font-variant-numeric: tabular-nums;
+}
+.clip-inbox-unread {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: var(--on-accent);
+  font-size: 10px;
+  font-weight: 750;
+}
+.clip-inbox-state,
+.clip-inbox-thread-empty {
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 32px;
+  color: var(--muted);
+  text-align: center;
+}
+.clip-inbox-state strong,
+.clip-inbox-thread-empty strong {
+  color: var(--text);
+  font-size: 16px;
+}
+.clip-inbox-state > span:not(.clip-spinner),
+.clip-inbox-thread-empty span {
+  max-width: 290px;
+  font-size: 12px;
+  line-height: 1.45;
+}
+.clips-screen .clip-inbox-state > button {
+  min-height: 38px;
+  margin-top: 3px;
+  padding-inline: 14px;
+  background: var(--secondary);
+  color: var(--text);
+}
+
+.clip-inbox-thread {
+  min-width: 0;
+  min-height: 0;
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  background: color-mix(in srgb, var(--primary) 95%, var(--secondary));
+}
+.clip-inbox.has-thread .clip-inbox-list {
+  display: none;
+}
+.clip-inbox.has-thread .clip-inbox-thread {
+  display: flex;
+}
+.clip-inbox-thread-head {
+  min-height: 58px;
+  flex: 0 0 auto;
+  display: grid;
+  grid-template-columns: 36px 38px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--divider);
+  background: color-mix(in srgb, var(--primary) 98%, transparent);
+}
+.clips-screen .clip-inbox-thread-back {
+  width: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  padding: 6px;
+}
+.clip-inbox-thread-head > span {
+  min-width: 0;
+  display: grid;
+  gap: 2px;
+}
+.clip-inbox-thread-head > span strong,
+.clip-inbox-thread-head > span small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.clip-inbox-thread-head > span strong {
+  font-size: 14px;
+}
+.clip-inbox-thread-head > span small {
+  color: var(--hint);
+  font-size: 10px;
+  font-weight: 450;
+}
+.clips-screen .clip-inbox-max {
+  min-height: 36px;
+  padding: 7px 10px;
+  border-radius: 11px;
+  background: var(--secondary);
+  color: var(--accent-text);
+  font-size: 12px;
+  font-weight: 650;
+}
+.clip-inbox-chat {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 10px 12px 18px;
+  scroll-behavior: smooth;
+}
+.clip-inbox-note {
+  width: min(100%, 430px);
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+  margin: 4px auto 16px;
+  padding: 8px 10px;
+  border-radius: 11px;
+  background: var(--secondary);
+  color: var(--hint);
+  font-size: 10px;
+  line-height: 1.4;
+}
+.clip-inbox-note .ui-icon {
+  flex: 0 0 auto;
+  margin-top: 1px;
+}
+.clip-inbox-day {
+  width: fit-content;
+  margin: 18px auto 10px;
+  padding: 4px 8px;
+  border-radius: 9px;
+  background: var(--secondary);
+  color: var(--hint);
+  font-size: 10px;
+  font-weight: 600;
+}
+.clip-inbox-message {
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  margin: 8px 0;
+}
+.clip-inbox-message.is-outgoing {
+  justify-content: flex-end;
+}
+.clip-inbox-message > .avatar {
+  flex: 0 0 auto;
+  margin-bottom: 21px;
+}
+.clip-inbox-message-body {
+  width: min(62%, 208px);
+  min-width: 132px;
+}
+.clip-inbox-message.is-outgoing .clip-inbox-message-body {
+  display: grid;
+  justify-items: end;
+}
+.clip-inbox-bubble {
+  position: relative;
+  width: 100%;
+  overflow: visible;
+  border-radius: 19px;
+  background: var(--card);
+  box-shadow: 0 5px 18px color-mix(in srgb, #000 10%, transparent);
+}
+.clip-inbox-message.is-incoming .clip-inbox-bubble {
+  border-bottom-left-radius: 7px;
+}
+.clip-inbox-message.is-outgoing .clip-inbox-bubble {
+  border-bottom-right-radius: 7px;
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 18%, var(--divider));
+}
+.clip-inbox-media {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 19px 19px 12px 12px;
+  background: #101114;
+}
+.clip-inbox-media .clip-cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 14;
+  min-height: 0;
+  display: block;
+  overflow: hidden;
+  padding: 0;
+  border-radius: 0;
+  background: #101114;
+}
+.clip-inbox-media .clip-cover > span {
+  z-index: 1;
+}
+.clip-inbox-video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 9 / 14;
+  object-fit: contain;
+  background: #0c0d10;
+}
+.clip-inbox-media-empty {
+  aspect-ratio: 9 / 14;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 8px;
+  color: #b9bbc2;
+  font-size: 11px;
+}
+.clip-inbox-media-copy {
+  display: grid;
+  gap: 3px;
+  padding: 9px 10px 10px;
+}
+.clip-inbox-media-copy span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.clip-inbox-media-copy span {
+  color: var(--muted);
+  font-size: 10px;
+}
+.clips-screen .clip-inbox-reaction-badge {
+  position: absolute;
+  right: -9px;
+  bottom: -11px;
+  min-width: 34px;
+  width: 34px;
+  height: 30px;
+  min-height: 30px;
+  padding: 0;
+  border-radius: 15px;
+  background: var(--card);
+  box-shadow: 0 3px 12px color-mix(in srgb, #000 16%, transparent);
+  font-size: 17px;
+}
+.clip-inbox-message.is-outgoing .clip-inbox-reaction-badge {
+  left: -9px;
+  right: auto;
+}
+.clip-inbox-reaction-badge.is-new {
+  box-shadow:
+    0 0 0 2px var(--accent),
+    0 3px 12px color-mix(in srgb, #000 16%, transparent);
+}
+.clip-inbox-message-meta {
+  min-height: 21px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 4px 0;
+  color: var(--hint);
+  font-size: 9px;
+  font-variant-numeric: tabular-nums;
+}
+.clip-inbox-message.is-outgoing .clip-inbox-message-meta {
+  justify-content: flex-end;
+}
+.clips-screen .clip-inbox-react {
+  min-height: 24px;
+  padding: 2px 5px;
+  border-radius: 7px;
+  color: var(--accent-text);
+  font-size: 10px;
+  font-weight: 650;
+}
+.clip-inbox-reactions {
+  width: fit-content;
+  max-width: min(100%, 310px);
+  display: flex;
+  gap: 3px;
+  margin-top: 5px;
+  padding: 5px;
+  overflow-x: auto;
+  border: 1px solid var(--divider);
+  border-radius: 18px;
+  background: var(--card);
+  box-shadow: 0 8px 24px color-mix(in srgb, #000 15%, transparent);
+}
+.clips-screen .clip-inbox-reactions > button {
+  flex: 0 0 auto;
+  width: 34px;
+  height: 34px;
+  min-height: 34px;
+  padding: 0;
+  border-radius: 50%;
+  font-size: 19px;
+  transition: transform 120ms ease, background 120ms ease;
+}
+.clips-screen .clip-inbox-reactions > button:hover,
+.clips-screen .clip-inbox-reactions > button[aria-pressed='true'] {
+  transform: scale(1.08);
+  background: var(--secondary);
+}
+.clip-inbox-rule {
+  min-height: 54px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 8px 12px calc(8px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--divider);
+  background: var(--primary);
+}
+.clip-inbox-rule > span {
+  color: var(--hint);
+  font-size: 10px;
+}
+.clips-screen .clip-inbox-rule > button {
+  min-height: 36px;
+  padding: 7px 10px;
+  background: var(--secondary);
+  color: var(--accent-text);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+@media (min-width: 760px) {
+  .clip-inbox {
+    grid-template-columns: 310px minmax(0, 1fr);
+  }
+  .clip-inbox-list,
+  .clip-inbox.has-thread .clip-inbox-list {
+    display: block;
+    border-right: 1px solid var(--divider);
+  }
+  .clip-inbox-thread {
+    display: flex;
+  }
+  .clip-inbox-thread-back {
+    display: none !important;
+  }
+  .clip-inbox-thread-head {
+    grid-template-columns: 38px minmax(0, 1fr) auto;
+    padding-inline: 14px;
+  }
+  .clip-inbox-message-body {
+    width: min(42%, 200px);
+  }
+  .clip-inbox-chat {
+    padding: 14px 24px 22px;
+  }
+}
+
+@media (max-width: 420px) {
+  .clips-screen.is-inbox .clips-header nav button {
+    padding-inline: 7px;
+    font-size: 13px;
+  }
+  .clip-inbox-list-head {
+    padding-inline: 14px;
+  }
+  .clip-inbox-message-body {
+    width: min(64%, 190px);
+  }
+  .clip-inbox-rule > span {
+    display: none;
+  }
+  .clips-screen .clip-inbox-rule > button {
+    width: 100%;
+  }
+}
+
+
+/* Reels playback controls: real scrubbing, temporary edge 2x and selectable speed. */
+.clip-play-area {
+  z-index: 1;
+}
+.clip-speed-zone {
+  position: absolute;
+  top: 0;
+  bottom: 30px;
+  width: 28%;
+  z-index: 2;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.clip-speed-zone.is-left {
+  left: 0;
+}
+.clip-speed-zone.is-right {
+  right: 0;
+}
+.clip-sound,
+.clip-actions,
+.clip-description {
+  z-index: 3;
+}
+.clip-scrubber {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 6;
+  height: 30px;
+  touch-action: none;
+}
+.clip-scrubber-track {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 9px;
+  height: 3px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #ffffff38;
+  pointer-events: none;
+}
+.clip-scrubber-track > span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: #fff;
+}
+.clip-scrubber input {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  bottom: 0;
+  width: calc(100% - 16px);
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  cursor: pointer;
+  touch-action: none;
+}
+.clip-scrubber input::-webkit-slider-runnable-track {
+  height: 3px;
+  background: transparent;
+}
+.clip-scrubber input::-moz-range-track {
+  height: 3px;
+  background: transparent;
+  border: 0;
+}
+.clip-scrubber input::-webkit-slider-thumb {
+  width: 10px;
+  height: 10px;
+  margin-top: -3.5px;
+  border: 0;
+  border-radius: 50%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: #fff;
+  box-shadow: 0 1px 5px #0008;
+}
+.clip-scrubber input::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border: 0;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 5px #0008;
+}
+.clip-scrubber.is-seeking input::-webkit-slider-thumb {
+  transform: scale(1.35);
+}
+.clip-scrubber.is-seeking input::-moz-range-thumb {
+  transform: scale(1.35);
+}
+.clip-scrubber output {
+  position: absolute;
+  left: 50%;
+  bottom: 29px;
+  transform: translateX(-50%);
+  min-width: max-content;
+  padding: 5px 8px;
+  border-radius: 10px;
+  background: #111d;
+  color: #fff;
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+.clip-speed-menu {
+  display: grid;
+  gap: 8px;
+  padding: 3px 8px 7px;
+}
+.clip-speed-menu > span {
+  color: var(--hint);
+  font-size: 12px;
+  font-weight: 650;
+}
+.clip-speed-options {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 6px;
+}
+.clips-screen .clip-speed-options > button {
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  padding: 7px 5px;
+  border-radius: 10px;
+  background: var(--secondary);
+  color: var(--text);
+  font-size: 12px;
+  font-weight: 700;
+}
+.clips-screen .clip-speed-options > button.is-active {
+  box-shadow: inset 0 0 0 1.5px var(--accent);
+  color: var(--accent-text);
+}
+.clip-inbox-feed-title {
+  min-width: 0;
+  overflow: hidden;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* Shared-video message gestures: keep vertical chat scrolling while enabling hold actions. */
+.clip-inbox-media .clip-cover {
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+
+/* Refined shared-reel cards: one clean outline, reactions sit directly on it. */
+.clip-inbox-preserve {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+}
+.clip-inbox-preserve[hidden] {
+  display: none;
+}
+.clip-inbox-preserve > .clip-inbox {
+  flex: 1;
+  min-width: 0;
+}
+.clip-inbox-bubble,
+.clip-inbox-message.is-incoming .clip-inbox-bubble,
+.clip-inbox-message.is-outgoing .clip-inbox-bubble {
+  border-radius: 16px;
+  background: transparent;
+  box-shadow: none;
+}
+.clip-inbox-media {
+  position: static;
+  overflow: visible;
+  border: 1px solid color-mix(in srgb, var(--divider) 88%, transparent);
+  border-radius: 16px;
+  background: #101114;
+  box-shadow: 0 2px 10px color-mix(in srgb, #000 12%, transparent);
+}
+.clip-inbox-message.is-outgoing .clip-inbox-media {
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--divider));
+}
+.clip-inbox-media .clip-cover {
+  overflow: hidden;
+  border-radius: 15px;
+}
+.clip-inbox-media .clip-cover > span {
+  display: none;
+}
+.clips-screen .clip-inbox-reaction-badge {
+  z-index: 3;
+  right: 6px;
+  bottom: -7px;
+  width: 30px;
+  min-width: 30px;
+  height: 25px;
+  min-height: 25px;
+  padding: 0;
+  border: 1px solid color-mix(in srgb, var(--divider) 88%, transparent);
+  border-radius: 999px;
+  background: var(--primary);
+  box-shadow: 0 2px 8px color-mix(in srgb, #000 18%, transparent);
+  font-size: 16px;
+  line-height: 1;
+}
+.clip-inbox-message.is-outgoing .clip-inbox-reaction-badge {
+  left: 6px;
+  right: auto;
+}
+.clip-inbox-reaction-badge.is-new {
+  border-color: color-mix(in srgb, var(--accent) 62%, var(--divider));
+  box-shadow: 0 2px 8px color-mix(in srgb, #000 18%, transparent);
+}

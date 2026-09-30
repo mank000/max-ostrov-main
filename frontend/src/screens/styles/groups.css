@@ -1,0 +1,70 @@
+.group-hero {
+  margin: 12px 16px 8px;
+  padding: 18px 16px;
+  border: 1px solid var(--divider);
+  border-radius: 18px;
+  background: var(--primary);
+}
+.group-hero__status {
+  display: inline-flex;
+  min-height: 26px;
+  align-items: center;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 590;
+}
+.group-hero h2 {
+  margin: 10px 0 4px;
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: 650;
+  letter-spacing: -0.2px;
+}
+.group-hero p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 20px;
+}
+.group-hero small {
+  display: block;
+  margin-top: 8px;
+  color: var(--hint);
+  font-size: 12px;
+  line-height: 17px;
+}
+.group-invite-banner {
+  margin: 8px 16px 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.group-invite-banner strong {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 650;
+}
+.group-invite-banner span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+.group-chat-hint {
+  margin: -6px 0 16px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 17px;
+}
+.group-chat-mismatch {
+  margin: 4px 16px 12px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}

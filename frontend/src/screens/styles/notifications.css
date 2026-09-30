@@ -1,0 +1,111 @@
+.notification-row {
+  width: 100%;
+  min-height: 84px;
+  border: 0;
+  padding: 13px 16px;
+  background: var(--primary);
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  text-align: left;
+  font: inherit;
+}
+.notification-row.is-unread {
+  background: var(--accent-soft);
+}
+.notification-row:active {
+  filter: brightness(0.98);
+}
+.notification-row__visual {
+  position: relative;
+  flex: none;
+  width: 48px;
+  height: 48px;
+}
+.notification-row__icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--secondary);
+  color: var(--accent-text);
+  display: grid;
+  place-items: center;
+}
+.notification-row__type {
+  position: absolute;
+  right: -3px;
+  bottom: -3px;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--on-accent);
+  display: grid;
+  place-items: center;
+}
+.notification-row.is-unread .notification-row__type {
+  border-color: var(--accent-soft);
+}
+.notification-row__copy {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.notification-row__meta {
+  min-width: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.notification-row__meta strong {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 650;
+}
+.notification-row__meta time {
+  flex: none;
+  color: var(--hint);
+  font-size: 12px;
+  line-height: 17px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.notification-row__title {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 590;
+}
+.notification-row__title small {
+  color: var(--hint);
+  font-size: 12px;
+  line-height: inherit;
+  font-weight: 400;
+}
+.notification-row__body {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 19px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+.notification-row__dot {
+  width: 8px;
+  height: 8px;
+  flex: none;
+  margin: 7px 0 0 2px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+

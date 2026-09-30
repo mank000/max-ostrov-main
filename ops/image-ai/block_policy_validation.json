@@ -1,0 +1,37 @@
+{
+  "model_sha256": "9dac1038147f2bd79a78146ec6da2793de6f13fba0f43d932cbd5412be73ded2",
+  "bytes": 48460088,
+  "swimwear": {
+    "train": {
+      "count": 28,
+      "old_false_blocks": 4,
+      "new_false_blocks": 0
+    },
+    "validation": {
+      "count": 8,
+      "old_false_blocks": 2,
+      "new_false_blocks": 1
+    },
+    "test": {
+      "count": 48,
+      "old_false_blocks": 2,
+      "new_false_blocks": 0
+    }
+  },
+  "external_false_blocks": 1,
+  "test": {
+    "tp": 2107,
+    "fp": 15,
+    "positive": 2490,
+    "negative": 1931,
+    "max_cached_feature_reference_delta": 0.018416881561279297
+  },
+  "quantization_parity": {
+    "rows": 128,
+    "max_probability_delta": 0.0038621723651885986,
+    "block_decision_changes": 0,
+    "same_preprocessing": true
+  },
+  "threshold": 0.9,
+  "selection": "Threshold retained from V7 validation; reused test discloses tradeoff. New event test is small and correlated."
+}

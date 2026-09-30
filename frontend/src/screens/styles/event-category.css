@@ -1,0 +1,72 @@
+.event-category-cell {
+  width: 100%;
+  min-height: 64px;
+  margin: 1px 0 14px;
+  padding: 8px 13px;
+  border: 1px solid var(--divider);
+  border-radius: 13px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--secondary);
+  color: var(--text);
+  text-align: left;
+}
+.event-category-picker > .field,
+.event-category-picker > .error-text {
+  margin: 16px;
+}
+.event-category-action .ui-button {
+  display: block;
+  width: min(100%, 240px);
+  margin-inline: auto;
+}
+.event-category-cell > .ui-icon:first-child {
+  color: var(--accent-text);
+}
+.event-category-cell > span:nth-child(2) {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.event-category-cell strong {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 590;
+}
+.event-category-cell small {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+.event-category-cell > .ui-icon:last-child {
+  color: var(--muted);
+}
+.event-form__resolved {
+  margin: 0 0 12px;
+  color: var(--accent-text);
+  font-size: 13px;
+  line-height: 18px;
+}
+.event-form__address-choices {
+  margin: 0 0 12px;
+  border: 1px solid var(--divider);
+  border-radius: 13px;
+  overflow: hidden;
+}
+.event-form__address-choices legend {
+  padding: 0 6px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+.event-form__address-choices .cell + .cell {
+  border-top: 1px solid var(--divider);
+}
+.event-form__location-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 3px 0 1px;
+}

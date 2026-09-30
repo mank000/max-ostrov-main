@@ -1,0 +1,329 @@
+openapi: 3.0.3
+info:
+  title: Кутёж — API основного пользовательского сценария
+  version: 1.0.0
+  description: >-
+    Публичные проверки доступности и маршруты входа, профиля, мероприятий и ленты.
+    Остальные доменные маршруты реализованы в backend/internal/httpapi/routes.go.
+servers:
+  - url: https://kutezh-social.ru
+paths:
+  /api/v1/health:
+    get:
+      summary: Готовность API, базы и файлового хранилища
+      security: []
+      responses:
+        '200':
+          description: Готов
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status: {type: string, enum: [ok]}
+        '503': {$ref: '#/components/responses/Error'}
+  /api/v1/geocoding/config:
+    get:
+      summary: Конфигурация поиска мест
+      security: []
+      responses:
+        '200':
+          description: Конфигурация
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [autocomplete]
+                properties:
+                  autocomplete: {type: boolean}
+  /api/v1/auth/max:
+    post:
+      summary: Подтвердить данные запуска MAX и открыть сессию
+      security: []
+      parameters:
+        - name: X-Kutezh-Session-Transport
+          in: header
+          schema: {type: string, enum: [bearer]}
+          description: Включает access_token, media_token и realtime_token в ответ
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [init_data]
+              properties:
+                init_data: {type: string, description: Подписанные данные запуска MAX}
+      responses:
+        '200':
+          description: Сессия; с заголовком X-Kutezh-Session-Transport bearer включает access_token
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Session'}
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+        '503': {$ref: '#/components/responses/Error'}
+  /api/v1/auth/session:
+    get:
+      summary: Проверить текущую сессию
+      security: [{BearerAuth: []}, {SessionCookie: []}]
+      responses:
+        '200':
+          description: Сессия
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Session'}
+        '401': {$ref: '#/components/responses/Error'}
+  /api/v1/users/me:
+    get:
+      summary: Прочитать общий профиль
+      security: [{BearerAuth: []}, {SessionCookie: []}]
+      responses:
+        '200':
+          description: Профиль
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Profile'}
+        '401': {$ref: '#/components/responses/Error'}
+    patch:
+      summary: Обновить общий профиль
+      security: [{BearerAuth: []}, {SessionCookie: []}]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                display_name: {type: string}
+                city: {type: string}
+                bio: {type: string}
+                interests: {type: array, items: {type: string}}
+                onboarding_complete: {type: boolean}
+      responses:
+        '200':
+          description: Обновлённый профиль
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Profile'}
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+        '409': {$ref: '#/components/responses/Error'}
+  /api/v1/events:
+    get:
+      summary: Получить мероприятия
+      security: [{BearerAuth: []}, {SessionCookie: []}]
+      parameters:
+        - {name: city, in: query, schema: {type: string}}
+        - {name: category, in: query, schema: {type: string}}
+        - {name: starts_from, in: query, schema: {type: string, format: date-time}}
+        - {name: starts_to, in: query, schema: {type: string, format: date-time}}
+        - {name: price_max_rubles, in: query, schema: {type: integer}}
+      responses:
+        '200':
+          description: Список мероприятий
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [events]
+                properties:
+                  events: {type: array, items: {$ref: '#/components/schemas/Event'}}
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+        '403': {$ref: '#/components/responses/Error'}
+    post:
+      summary: Создать мероприятие
+      security: [{BearerAuth: []}, {SessionCookie: []}]
+      parameters:
+        - {name: Idempotency-Key, in: header, required: true, schema: {type: string}}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/CreateEvent'}
+      responses:
+        '201':
+          description: Созданное мероприятие
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Event'}
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+        '403': {$ref: '#/components/responses/Error'}
+        '409': {$ref: '#/components/responses/Error'}
+  /api/v1/events/categories:
+    get:
+      summary: Категории мероприятий
+      security: [{BearerAuth: []}, {SessionCookie: []}]
+      responses:
+        '200':
+          description: Категории
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [categories]
+                properties:
+                  categories:
+                    type: array
+                    items:
+                      type: object
+                      required: [name, event_count]
+                      properties:
+                        name: {type: string}
+                        event_count: {type: integer}
+        '401': {$ref: '#/components/responses/Error'}
+  /api/v1/events/{eventId}:
+    parameters:
+      - name: eventId
+        in: path
+        required: true
+        schema: {type: integer, minimum: 1}
+    get:
+      summary: Открыть карточку мероприятия
+      security: [{BearerAuth: []}, {SessionCookie: []}]
+      responses:
+        '200':
+          description: Мероприятие
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Event'}
+        '401': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+    delete:
+      summary: Удалить своё мероприятие
+      security: [{BearerAuth: []}, {SessionCookie: []}]
+      responses:
+        '204': {description: Удалено}
+        '401': {$ref: '#/components/responses/Error'}
+        '403': {$ref: '#/components/responses/Error'}
+        '404': {$ref: '#/components/responses/Error'}
+  /api/v1/feed:
+    get:
+      summary: Получить ленту
+      security: [{BearerAuth: []}, {SessionCookie: []}]
+      parameters:
+        - {name: scope, in: query, schema: {type: string, enum: [all, city, friends]}}
+        - {name: city, in: query, schema: {type: string}}
+        - {name: rank_cursor, in: query, schema: {type: string}}
+        - {name: before_id, in: query, schema: {type: integer}}
+      responses:
+        '200':
+          description: Публикации и курсор следующей страницы
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [posts]
+                properties:
+                  posts: {type: array, items: {$ref: '#/components/schemas/Post'}}
+                  next_cursor: {type: integer}
+                  next_rank_cursor: {type: string}
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+        '403': {$ref: '#/components/responses/Error'}
+  /api/v1/posts:
+    post:
+      summary: Создать публикацию
+      security: [{BearerAuth: []}, {SessionCookie: []}]
+      parameters:
+        - {name: Idempotency-Key, in: header, required: true, schema: {type: string}}
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                caption: {type: string}
+                city: {type: string}
+                visibility: {type: string}
+                media_ids: {type: array, items: {type: integer}}
+      responses:
+        '201':
+          description: Публикация
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Post'}
+        '400': {$ref: '#/components/responses/Error'}
+        '401': {$ref: '#/components/responses/Error'}
+        '403': {$ref: '#/components/responses/Error'}
+        '409': {$ref: '#/components/responses/Error'}
+components:
+  securitySchemes:
+    BearerAuth: {type: http, scheme: bearer}
+    SessionCookie: {type: apiKey, in: cookie, name: kutezh_session}
+  responses:
+    Error:
+      description: Ошибка запроса
+      content:
+        application/json:
+          schema:
+            type: object
+            required: [error]
+            properties:
+              error:
+                type: object
+                required: [code, message]
+                properties:
+                  code: {type: string}
+                  message: {type: string}
+  schemas:
+    Session:
+      type: object
+      required: [user, expires_at]
+      properties:
+        user:
+          type: object
+          required: [id, first_name]
+          properties:
+            id: {type: integer}
+            first_name: {type: string}
+            last_name: {type: string}
+        expires_at: {type: string, format: date-time}
+        access_token: {type: string}
+        media_token: {type: string}
+        realtime_token: {type: string}
+    Profile:
+      type: object
+      required: [id, display_name, city, onboarding_version]
+      properties:
+        id: {type: integer}
+        display_name: {type: string}
+        city: {type: string}
+        onboarding_version: {type: integer}
+        interests: {type: array, items: {type: string}}
+    Event:
+      type: object
+      required: [id, title, starts_at, location]
+      properties:
+        id: {type: integer}
+        title: {type: string}
+        starts_at: {type: string, format: date-time}
+        location: {$ref: '#/components/schemas/Location'}
+    CreateEvent:
+      type: object
+      required: [title, description, category, starts_at, location]
+      properties:
+        title: {type: string}
+        description: {type: string}
+        category: {type: string}
+        starts_at: {type: string, format: date-time}
+        location: {$ref: '#/components/schemas/Location'}
+    Location:
+      type: object
+      required: [latitude, longitude]
+      properties:
+        venue_name: {type: string}
+        address: {type: string}
+        city: {type: string}
+        latitude: {type: number, minimum: -90, maximum: 90}
+        longitude: {type: number, minimum: -180, maximum: 180}
+    Post:
+      type: object
+      required: [id]
+      properties:
+        id: {type: integer}
+        caption: {type: string}

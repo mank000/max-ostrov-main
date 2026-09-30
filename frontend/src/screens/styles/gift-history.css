@@ -1,0 +1,200 @@
+.gift-screen {
+  padding: 14px 16px 28px;
+}
+.gift-screen__intro {
+  min-height: 102px;
+  padding: 19px 19px 16px;
+  margin-bottom: 16px;
+  border: 1px solid var(--divider);
+  border-radius: 18px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, #ed9faa 13%, var(--primary)),
+    color-mix(in srgb, #8caae0 12%, var(--primary))
+  );
+}
+.gift-screen__intro > span {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--accent-text);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.gift-screen__intro > strong {
+  display: block;
+  color: var(--text);
+  font-size: 21px;
+  line-height: 27px;
+  font-weight: 700;
+}
+.gift-screen__intro p {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+.gift-history-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+  align-items: stretch;
+}
+.gift-history-card,
+.gift-picker-card,
+.gift-selection-summary,
+.gift-detail-sheet {
+  --gift-tint: #e99aaa;
+  --gift-shade: #f8d9df;
+}
+[data-gift-theme='friends'] {
+  --gift-tint: #d49b79;
+  --gift-shade: #f5deca;
+}
+[data-gift-theme='treats'] {
+  --gift-tint: #e0ad66;
+  --gift-shade: #f9e6bd;
+}
+[data-gift-theme='flowers'] {
+  --gift-tint: #d78aaf;
+  --gift-shade: #f7d7e9;
+}
+[data-gift-theme='moments'] {
+  --gift-tint: #83ad9e;
+  --gift-shade: #d6efe3;
+}
+[data-gift-theme='sky'] {
+  --gift-tint: #8b98ca;
+  --gift-shade: #dae0fa;
+}
+.gift-history-card {
+  min-width: 0;
+  border: 1px solid var(--divider);
+  border-radius: 18px;
+  padding: 8px;
+  background: var(--primary);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+.gift-history-card__sender {
+  width: 100%;
+  min-width: 0;
+  height: 36px;
+  border: 0;
+  padding: 0 2px 6px;
+  background: transparent;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  text-align: left;
+}
+.gift-history-card__sender .avatar {
+  flex: none;
+}
+.gift-history-card__sender-name {
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: 600;
+}
+.gift-history-card__sender > .ui-icon {
+  flex: none;
+  color: var(--hint);
+}
+.gift-history-card__detail {
+  flex: 1;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  padding: 0 7px 10px;
+  background: color-mix(in srgb, var(--gift-shade) 30%, var(--primary));
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.gift-history-card__art,
+.gift-picker-card__art,
+.gift-detail-sheet__art {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  isolation: isolate;
+}
+.gift-history-card__art {
+  width: 100%;
+  height: 116px;
+}
+.gift-history-card__art::before,
+.gift-picker-card__art::before,
+.gift-detail-sheet__art::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  width: 80%;
+  height: 76%;
+  border-radius: 45% 55% 52% 48%;
+  background: radial-gradient(
+    circle at 36% 33%,
+    color-mix(in srgb, var(--gift-shade) 55%, var(--primary)),
+    color-mix(in srgb, var(--gift-tint) 26%, var(--primary))
+  );
+  transform: rotate(-9deg);
+}
+.gift-history-card__art svg,
+.gift-history-card__art img,
+.gift-picker-card__art svg,
+.gift-picker-card__art img,
+.gift-detail-sheet__art svg,
+.gift-detail-sheet__art img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 7px 5px rgb(0 0 0 / 0.11));
+}
+.gift-history-card__copy {
+  width: 100%;
+  min-width: 0;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.gift-history-card__copy strong {
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 650;
+}
+.gift-history-card__copy > span {
+  width: 100%;
+  min-height: 34px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 17px;
+}
+.gift-history-card__copy small {
+  margin-top: auto;
+  color: var(--hint);
+  font-size: 11px;
+  line-height: 16px;
+}

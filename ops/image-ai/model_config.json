@@ -1,0 +1,69 @@
+{
+  "preprocess": {
+    "input_size": [
+      3,
+      256,
+      256
+    ],
+    "interpolation": "bicubic",
+    "mean": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "std": [
+      1.0,
+      1.0,
+      1.0
+    ],
+    "crop_pct": 0.95,
+    "crop_mode": "center"
+  },
+  "review_thresholds": {
+    "violence": 0.9576249718666077,
+    "sexual_explicit": 0.43724021315574646,
+    "weapon": 0.8972294330596924,
+    "graphic_violence": 0.9,
+    "drug_visual": 0.9,
+    "extremist_symbol": 0.9755682349205017
+  },
+  "policy": "Explicit >= .90 is hidden by application worker; intermediate explicit or safety signals go to human review. Suggestive score alone is informational: clothed swimwear is permitted. No legal conclusion.",
+  "model": "image-v16-fp16-dual-head-anatomy",
+  "experimental_review_labels": [
+    "weapon",
+    "graphic_violence",
+    "drug_visual",
+    "extremist_symbol"
+  ],
+  "safety_threshold_notes": {
+    "weapon": "Validation precision >= .95; recall .326 on 749 positives, not a block threshold.",
+    "drug_visual": "Conservative .90 review floor because small weak validation overestimates precision; not statistically calibrated.",
+    "graphic_violence": "Conservative .90 review floor; only one known positive validation example, insufficient quality evidence.",
+    "extremist_symbol": "Review only, visual symbol is not evidence of endorsement."
+  },
+  "anatomy_cascade": {
+    "version": "c15d8273adad2d0a92f014cc69ab2d6c311a06777a55545f2c4eb46f51911f0f",
+    "classifier_min": 0.43724021315574646,
+    "classifier_max": 0.9,
+    "block_thresholds": {
+      "FEMALE_BREAST_EXPOSED": 0.75,
+      "FEMALE_GENITALIA_EXPOSED": 0.65,
+      "MALE_GENITALIA_EXPOSED": 0.49
+    },
+    "note": "Primary or reference routes intermediate explicit scores to anatomy; high suggestive routes for bounded crop confirmation. Reference alone never blocks. Thresholds selected on old validation; +47/2430 detected with +4/1885 false blocks versus prior policy, with unchanged model and compute."
+  },
+  "architecture": "Shared frozen backbone; V13 fine-tuned on 3794 new images, validation-selected 0.1 weight average with V11; unchanged safety and V9 reference heads.",
+  "multiview_policy": {
+    "upper_full_min": 0.75,
+    "upper_crop_min": 0.95,
+    "suggestive_min": 0.8,
+    "breast_confirmation_min": 0.75,
+    "center_crop_min": 0.5,
+    "max_extra_crops": 1,
+    "note": "Development-driven rescue for illustrated nudity. Additional anatomy routing on high suggestive signal; one bounded crop. Weights unchanged. See regression report for false-positive tradeoff."
+  },
+  "precision": "FP16 weight storage with FP32 computation",
+  "base_model_sha256": "f5c4cbd92adb02e39624fc64fa3c69ca87365b9060797481384f0cd1d9e900f9",
+  "policy_revision": "anatomy-thresholds-20260928-v2",
+  "bundle_version": "6c9964d418b39c3c59f4dd141a54f44445d7c9d573178fa89ce2c4074093e83b"
+}

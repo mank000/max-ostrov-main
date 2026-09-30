@@ -1,0 +1,242 @@
+/* Artwork and composition from Artur@bc69999; scoped to the platform entry. */
+.service-chooser {
+  width: 100%; height: 100%; min-height: 0; overflow: hidden;
+  background: var(--secondary); color: var(--text); overscroll-behavior: none;
+}
+.service-hub {
+  position: relative; isolation: isolate; width: 100%; max-width: 430px;
+  height: 100%; min-height: 0; margin: auto; overflow: hidden;
+  display: flex; flex-direction: column;
+  padding: calc(clamp(6px, 1.4dvh, 12px) + env(safe-area-inset-top)) env(safe-area-inset-right) calc(clamp(6px, 1.4dvh, 16px) + env(safe-area-inset-bottom)) env(safe-area-inset-left);
+  background: #edf4ff;
+}
+.service-hub-background { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; pointer-events: none; z-index: -1; }
+.service-hub::before, .service-hub::after { content: ''; position: absolute; z-index: 0; pointer-events: none; background: center / contain no-repeat; width: 190px; height: 190px; }
+.service-hub::before { left: -58px; bottom: -72px; background-image: url('/assets/artur/coin.png'); transform: rotate(-18deg); opacity: .72; }
+.service-hub::after { right: -56px; bottom: -48px; background-image: url('/assets/artur/heart.png'); transform: rotate(12deg); opacity: .58; }
+.service-hub-header {
+  position: relative; z-index: 1; display: flex; align-items: center; justify-content: space-between; flex: none;
+  gap: 12px; margin: 0 12px clamp(6px, 1.8dvh, 20px); padding: clamp(7px, 1.4dvh, 10px) 14px; height: clamp(54px, 10dvh, 68px);
+  border-radius: 22px; background: var(--primary); box-shadow: 0 6px 20px #18202d0d;
+}
+.service-hub-user { display: flex; flex: 1; min-width: 0; gap: 10px; align-items: center; border: 0; padding: 0; background: none; color: inherit; text-align: left; }
+.service-hub-user .avatar { flex: none; width: clamp(40px, 7dvh, 48px) !important; height: clamp(40px, 7dvh, 48px) !important; border-radius: 14px; background: #111; color: #fff; font-weight: 700; }
+.service-hub-user > span:last-child { display: grid; gap: 2px; min-width: 0; }
+.service-hub-user strong, .service-hub-user small { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.service-hub-user strong { font-size: 16px; }
+.service-hub-user small { font-size: 13px; color: var(--muted); }
+.service-hub-header-actions { display: flex; align-items: center; gap: 8px; flex: none; }
+.service-hub-bell { position: relative; flex: none; display: grid; place-items: center; width: clamp(40px, 7dvh, 44px); height: clamp(40px, 7dvh, 44px); border: 0; border-radius: 14px; background: var(--primary); color: inherit; box-shadow: 0 4px 14px #18202d10; }
+.service-hub-support { color: var(--action-text); }
+.service-hub-notification-badge,
+.service-card-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background: #ff3b5f;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1;
+}
+.service-hub-notification-badge {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  box-shadow: 0 0 0 2px var(--primary);
+}
+.service-hub-balance { position: relative; z-index: 1; flex: none; margin: 0 20px clamp(6px, 1.8dvh, 24px); text-align: center; }
+.service-hub-balance > span { display: block; color: var(--muted); font-size: clamp(13px, 2.2dvh, 15px); }
+.service-hub-balance > strong { display: block; margin: clamp(2px, .6dvh, 4px) 0 clamp(5px, 1dvh, 8px); font-size: clamp(36px, 8.5dvh, 58px); line-height: 1; font-weight: 750; letter-spacing: -.06em; overflow-wrap: anywhere; }
+.service-hub-history, .service-hub-wallet-error { display: inline-flex; align-items: center; justify-content: center; gap: 7px; min-height: clamp(30px, 5.5dvh, 38px); max-width: 100%; padding: clamp(4px, 1dvh, 7px) 13px; border: 0; background: var(--primary); border-radius: 999px; color: var(--muted); font-size: clamp(12px, 2dvh, 13px); }
+.service-hub-history img { width: 24px; height: 24px; object-fit: contain; }
+.service-hub-decor { position: absolute; inset: calc(86px + env(safe-area-inset-top)) 0 auto; height: 280px; pointer-events: none; user-select: none; z-index: 0; }
+.service-hub-decor img { position: absolute; object-fit: contain; }
+.service-hub-decor-headphones { top: 72px; left: -14px; width: 116px; height: 116px; transform: rotate(-15deg); }
+.service-hub-decor-coins { top: 12px; right: -12px; width: 100px; height: 100px; transform: rotate(18deg); }
+.service-hub-decor-gamepad-small { top: 154px; right: 12px; width: 72px; height: 72px; transform: rotate(12deg); }
+.service-hub-decor-ticket { top: 154px; left: 0; width: 80px; height: 80px; transform: rotate(-16deg); }
+.service-hub-decor-heart { top: 218px; right: 0; width: 58px; height: 58px; }
+.service-hub-decor-sparkle { top: 110px; left: 102px; width: 32px; height: 32px; }
+.service-hub-slider {
+  --card-width: min(68vw, 270px);
+  position: relative; z-index: 1; display: flex; align-items: center; flex: 1 1 auto; min-height: 0; gap: clamp(10px, 2dvh, 14px); width: 100%;
+  overflow-x: auto; overflow-y: hidden; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+  scrollbar-width: none; padding: clamp(3px, .8dvh, 8px) calc((100% - var(--card-width)) / 2) clamp(4px, 1.3dvh, 16px);
+  cursor: grab; touch-action: pan-x pan-y; user-select: none;
+}
+.service-hub-slider::-webkit-scrollbar { display: none; }
+.service-hub-slider[data-recentering] { scroll-snap-type: none; }
+.service-hub-slider[data-recentering] .service-hub-card { transition: none; }
+.service-hub-slider[data-dragging] { cursor: grabbing; scroll-snap-type: none; }
+.service-hub-card {
+  position: relative; flex: 0 0 auto; width: auto;
+  height: min(430px, 112vw, calc(100% - 10px)); min-width: 0; aspect-ratio: 5 / 8; scroll-snap-align: center;
+  border: 0; border-radius: clamp(22px, 4.5dvh, 30px); padding: 0; overflow: hidden; background: transparent;
+  box-shadow: 0 10px 26px #141e3c1a; transform: scale(.92) translateY(min(8px, 1.2dvh));
+  opacity: .9; transition: transform .28s ease, opacity .28s ease; cursor: inherit;
+}
+.service-hub-card.is-active { transform: scale(1); opacity: 1; }
+/* The source art has a thin dark matte; a slight overscan keeps it outside the clipped card. */
+.service-hub-card img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.02); display: block; pointer-events: none; }
+.service-card-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px #0003;
+}
+.service-hub-dots {
+  gap: 7px;
+  padding: 0 12px;
+  flex: none;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 0 clamp(8px, 1.4dvh, 14px);
+}
+.service-hub-dots button {
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  min-width: 14px;
+  min-height: 14px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+}
+.service-hub-dots span {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #4b4d55;
+  transition: width .22s ease, height .22s ease, background-color .22s ease;
+}
+.service-hub-dots [aria-pressed='true'] span {
+  width: 10px;
+  height: 10px;
+  background: #fff;
+}
+:root[data-theme='light'] .service-hub-dots span { background: #aeb6c5; }
+:root[data-theme='light'] .service-hub-dots [aria-pressed='true'] span { background: #fff; }
+.service-hub-spend {
+  position: relative; z-index: 1; display: flex; align-items: center; flex: none; gap: 10px;
+  width: calc(100% - 48px); max-width: 340px; min-height: clamp(46px, 8dvh, 56px); margin: 0 auto;
+  border: 0; border-radius: 19px; padding: clamp(8px, 1.5dvh, 12px) 17px; background: #087ff5;
+  color: #fff; font-size: clamp(14px, 2.4dvh, 16px); font-weight: 650; text-align: left; box-shadow: 0 9px 18px #087ff52e;
+}
+.service-hub-spend > img { width: 30px; height: 30px; object-fit: contain; }
+.service-hub-spend .ui-icon { margin-left: auto; flex: none; }
+:root[data-theme='dark'] .service-hub { background: #191d2c; }
+:root[data-theme='dark'] .service-hub-background { opacity: .12; }
+:root[data-theme='dark'] .service-hub-header, :root[data-theme='dark'] .service-hub-history, :root[data-theme='dark'] .service-hub-wallet-error { background: #242837; }
+:root[data-theme='dark'] .service-hub-bell { background: #303547; }
+:root[data-theme='dark'] .service-hub-user .avatar { background: #353b50; }
+@media (max-width: 350px) {
+  .service-hub-slider { --card-width: min(68vw, 250px); }
+  .service-hub-decor-headphones { width: 88px; height: 88px; }
+  .service-hub-decor-coins { width: 76px; height: 76px; }
+  .service-hub-decor-gamepad-small, .service-hub-decor-ticket { width: 58px; height: 58px; }
+  .service-hub-decor-heart { display: none; }
+}
+@media (max-height: 620px) and (max-width: 959px) {
+  .service-hub-header { margin-inline: 10px; border-radius: 18px; }
+  .service-hub-balance { margin-inline: 14px; }
+  .service-hub-history img { width: 20px; height: 20px; }
+  .service-hub-spend { width: calc(100% - 36px); border-radius: 16px; }
+  .service-hub-spend > img { width: 26px; height: 26px; }
+}
+@media (min-width: 700px) and (min-height: 760px) { .service-hub { padding-top: calc(32px + env(safe-area-inset-top)); } .service-hub-decor { top: calc(106px + env(safe-area-inset-top)); } }
+@media (prefers-reduced-motion: reduce) { .service-hub-card { transition: none; } }
+
+.service-return-bar { flex: none; padding: max(4px, env(safe-area-inset-top)) 12px 0; background: var(--primary); }
+.service-return-bar button { min-height: 36px; padding: 4px 8px; border: 0; border-radius: 8px; color: var(--action-text); background: transparent; font-size: 14px; }
+
+.dating-container { height:100%; min-height:0; }
+.dating-container[hidden] { display:none; }
+.dating-shared-profile { margin:12px 16px; border:1px solid var(--divider); border-radius:16px; overflow:hidden; }
+.dating-shared-profile button { display:flex; align-items:center; gap:12px; width:100%; border:0; background:var(--primary); color:var(--text); padding:14px; text-align:left; }
+.dating-shared-profile button > span { flex:1; }
+.dating-shared-profile strong,.dating-shared-profile small { display:block; }
+.dating-shared-profile small { margin-top:6px; color:var(--action-text); font-size:13px; }
+.dating-shared-profile .dating-shared-city { border-top:1px solid var(--divider); color:var(--action-text); min-height:48px; }
+
+.dating-shared-profile .avatar, .dating-shared-profile .ui-icon { flex:none; }
+
+/* Subtle, independent motion for the decorative background layer. */
+@keyframes serviceDecorHeadphones {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-15deg) scale(.98); }
+  50% { transform: translate3d(2px, -8px, 0) rotate(-11deg) scale(1); }
+}
+@keyframes serviceDecorCoins {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(18deg) scale(1); }
+  50% { transform: translate3d(-3px, -7px, 0) rotate(15deg) scale(1.02); }
+}
+@keyframes serviceDecorGamepad {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(12deg); opacity: .94; }
+  50% { transform: translate3d(3px, 5px, 0) rotate(15deg); opacity: 1; }
+}
+@keyframes serviceDecorTicket {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-16deg) scale(.98); }
+  50% { transform: translate3d(-4px, -6px, 0) rotate(-13deg) scale(1); }
+}
+@keyframes serviceDecorHeart {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(12deg) scale(.98); opacity: .58; }
+  50% { transform: translate3d(-5px, -7px, 0) rotate(9deg) scale(1.03); opacity: .72; }
+}
+@keyframes serviceDecorSparkle {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(0deg) scale(.95); opacity: .62; }
+  50% { transform: translate3d(1px, -2px, 0) rotate(3deg) scale(1.06); opacity: 1; }
+}
+.service-hub-decor img {
+  pointer-events: none;
+  user-select: none;
+  will-change: transform, opacity;
+}
+.service-hub-decor-headphones { animation: serviceDecorHeadphones 5.8s ease-in-out -0.8s infinite; }
+.service-hub-decor-coins { animation: serviceDecorCoins 8.2s ease-in-out -1.4s infinite; }
+.service-hub-decor-gamepad-small { animation: serviceDecorGamepad 6.4s ease-in-out -2.1s infinite; }
+.service-hub-decor-ticket { animation: serviceDecorTicket 7.1s ease-in-out -1.1s infinite; }
+.service-hub-decor-heart { animation: serviceDecorHeart 7.3s ease-in-out -2.7s infinite; }
+.service-hub-decor-sparkle { animation: serviceDecorSparkle 4.9s ease-in-out -1.8s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .service-hub-decor img { animation: none; will-change: auto; }
+}
+
+@keyframes serviceDecorBottomCoin {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(-18deg) scale(.98); opacity: .68; }
+  50% { transform: translate3d(5px, -7px, 0) rotate(-14deg) scale(1.02); opacity: .8; }
+}
+@keyframes serviceDecorBottomHeart {
+  0%, 100% { transform: translate3d(0, 0, 0) rotate(12deg) scale(.98); opacity: .54; }
+  50% { transform: translate3d(-5px, -8px, 0) rotate(8deg) scale(1.03); opacity: .68; }
+}
+.service-hub::before,
+.service-hub::after {
+  will-change: transform, opacity;
+}
+.service-hub::before { animation: serviceDecorBottomCoin 8.6s ease-in-out -2.3s infinite; }
+.service-hub::after { animation: serviceDecorBottomHeart 7.8s ease-in-out -3.1s infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .service-hub::before,
+  .service-hub::after {
+    animation: none;
+    will-change: auto;
+  }
+}

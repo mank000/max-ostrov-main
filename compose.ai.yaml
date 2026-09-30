@@ -1,0 +1,110 @@
+x-ai: &ai
+  restart: unless-stopped
+  init: true
+  read_only: true
+  tmpfs:
+    - /tmp
+  healthcheck:
+    test:
+      - CMD
+      - python
+      - -c
+      - "import os, urllib.request; urllib.request.urlopen('http://127.0.0.1:' + os.environ['AI_HEALTH_PORT'] + '/health', timeout=4).read()"
+    interval: 10s
+    timeout: 5s
+    retries: 6
+    start_period: 120s
+
+services:
+  api:
+    environment:
+      KUTEZH_FACE_AI_URL: http://face-ai:8091/analyze
+      KUTEZH_IMAGE_AI_URL: http://image-ai:8093/analyze
+      KUTEZH_TEXT_AI_URL: http://text-ai:8092/analyze
+      KUTEZH_TEXT_AI_MODE: enforce
+    depends_on:
+      face-ai:
+        condition: service_healthy
+      text-ai:
+        condition: service_healthy
+      image-ai:
+        condition: service_healthy
+
+  face-ai:
+    <<: *ai
+    build:
+      context: .
+      dockerfile: docker/ai.Dockerfile
+      args:
+        AI_SOURCE: face-ai
+    environment:
+      FACE_AI_BIND: 0.0.0.0
+      FACE_AI_MODEL_DIR: /app/models
+      FACE_AI_AUTO_MATCH_ENABLED: ${FACE_AI_AUTO_MATCH_ENABLED:-0}
+      AI_HEALTH_PORT: "8091"
+    volumes:
+      - type: bind
+        source: ${KUTEZH_MODELS_DIR:-./models}/face
+        target: /app/models
+        read_only: true
+        bind:
+          create_host_path: false
+
+  text-ai:
+    <<: *ai
+    build:
+      context: .
+      dockerfile: docker/ai.Dockerfile
+      args:
+        AI_SOURCE: ops/text-ai
+    environment:
+      KUTEZH_TEXT_AI_BIND: 0.0.0.0
+      KUTEZH_TEXT_AI_ROOT: /app
+      AI_HEALTH_PORT: "8092"
+    volumes:
+      - type: bind
+        source: ${KUTEZH_MODELS_DIR:-./models}/text
+        target: /app/models
+        read_only: true
+        bind:
+          create_host_path: false
+
+  anatomy-ai:
+    <<: *ai
+    build:
+      context: .
+      dockerfile: docker/ai.Dockerfile
+      args:
+        AI_SOURCE: ops/anatomy-ai
+    environment:
+      KUTEZH_ANATOMY_AI_BIND: 0.0.0.0
+      AI_HEALTH_PORT: "8096"
+    volumes:
+      - type: bind
+        source: ${KUTEZH_MODELS_DIR:-./models}/anatomy
+        target: /app/models
+        read_only: true
+        bind:
+          create_host_path: false
+
+  image-ai:
+    <<: *ai
+    build:
+      context: .
+      dockerfile: docker/ai.Dockerfile
+      args:
+        AI_SOURCE: ops/image-ai
+    environment:
+      KUTEZH_IMAGE_AI_BIND: 0.0.0.0
+      KUTEZH_ANATOMY_AI_URL: http://anatomy-ai:8096/analyze
+      AI_HEALTH_PORT: "8093"
+    volumes:
+      - type: bind
+        source: ${KUTEZH_MODELS_DIR:-./models}/image
+        target: /app/models
+        read_only: true
+        bind:
+          create_host_path: false
+    depends_on:
+      anatomy-ai:
+        condition: service_healthy

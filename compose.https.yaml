@@ -1,0 +1,36 @@
+services:
+  api:
+    build:
+      target: production
+    environment:
+      KUTEZH_SESSION_COOKIE_SECURE: "true"
+      KUTEZH_MODERATION_HOST: ${MODERATION_DOMAIN:?Set MODERATION_DOMAIN in .env}
+      KUTEZH_BOT_TOKEN: ${KUTEZH_BOT_TOKEN:?Set KUTEZH_BOT_TOKEN in .env}
+      KUTEZH_TEXT_AI_MODE: enforce
+
+  gateway:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    environment:
+      APP_DOMAIN: ${APP_DOMAIN:?Set APP_DOMAIN in .env}
+      MODERATION_DOMAIN: ${MODERATION_DOMAIN:?Set MODERATION_DOMAIN in .env}
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./docker/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+    depends_on:
+      web:
+        condition: service_healthy
+    healthcheck:
+      test: [CMD, wget, -q, -O, /dev/null, "http://127.0.0.1:2019/config/"]
+      interval: 10s
+      timeout: 5s
+      retries: 6
+
+volumes:
+  caddy_data:
+  caddy_config:

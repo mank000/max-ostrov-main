@@ -1,0 +1,58 @@
+.event-hero {
+  background: var(--primary);
+  border-bottom: 1px solid var(--divider);
+  overflow: hidden;
+}
+.event-hero__image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: var(--secondary);
+}
+.event-hero__copy {
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+  padding: 14px 18px 18px;
+}
+.event-hero__copy > span {
+  color: var(--accent-text);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 590;
+}
+.event-hero h2 {
+  margin: 7px 0 0;
+  min-width: 0;
+  max-width: 100%;
+  font-size: 26px;
+  line-height: 31px;
+  font-weight: 590;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.event-hero p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 20px;
+  margin: 8px 0 0;
+}
+.event-description {
+  margin: 8px 16px 16px;
+  min-width: 0;
+  max-width: calc(100% - 32px);
+  font-size: 16px;
+  line-height: 22px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.detail-form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}

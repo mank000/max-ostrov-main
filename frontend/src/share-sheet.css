@@ -1,0 +1,145 @@
+.share-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: end center;
+  background: #0008;
+}
+.share-sheet {
+  width: min(100%, 620px);
+  max-height: min(78dvh, 760px);
+  overflow: hidden;
+  border-radius: 24px 24px 0 0;
+  background: var(--primary);
+  color: var(--text);
+  padding-bottom: max(env(safe-area-inset-bottom), 18px);
+  box-shadow: 0 -12px 36px #0002;
+  display: flex;
+  flex-direction: column;
+}
+.share-sheet__head {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 4px 10px 4px 18px;
+}
+.share-sheet__head > div {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.share-sheet__head strong {
+  font-size: 21px;
+  line-height: 26px;
+  font-weight: 590;
+}
+.share-sheet__head span {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.share-sheet__quick {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding: 8px 14px 14px;
+}
+.share-sheet__quick button {
+  min-width: 0;
+  min-height: 112px;
+  border: 0;
+  border-radius: 16px;
+  padding: 12px 8px 10px;
+  background: var(--secondary);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+.share-sheet__quick button > span {
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 3px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+.share-sheet__quick strong {
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 590;
+}
+.share-sheet__quick small {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 15px;
+  text-align: center;
+}
+.share-sheet h3 {
+  margin: 4px 18px 8px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 590;
+  color: var(--muted);
+}
+.share-sheet__friends {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-top: 1px solid var(--divider);
+}
+.share-sheet__friend {
+  width: 100%;
+  min-height: 64px;
+  border: 0;
+  padding: 8px 16px;
+  background: var(--primary);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+.share-sheet__friend > span:nth-child(2) {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.share-sheet__friend strong {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 590;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.share-sheet__friend small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 16px;
+}
+.share-sheet__friend > .ui-icon {
+  color: var(--accent-text);
+}
+.share-sheet__empty {
+  margin: 0;
+  padding: 24px 18px 30px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+}

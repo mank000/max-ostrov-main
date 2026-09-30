@@ -1,0 +1,121 @@
+.admin-screen {
+  padding: 0 16px 32px;
+}
+.admin-intro {
+  padding: 18px 0;
+}
+.admin-intro p,
+.admin-item p {
+  margin: 8px 0;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+}
+.admin-intro p,
+.admin-item small {
+  color: var(--muted);
+}
+.admin-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 6px 0 14px;
+}
+.admin-tabs button {
+  flex: none;
+  border: 0;
+  border-radius: 10px;
+  padding: 10px 14px;
+  background: var(--secondary);
+  color: var(--text);
+}
+.admin-tabs button[aria-selected='true'] {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.admin-search {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+.admin-search input,
+.admin-screen textarea {
+  min-width: 0;
+  width: 100%;
+  border: 1px solid var(--divider);
+  border-radius: 10px;
+  padding: 12px;
+  background: var(--primary);
+  color: var(--text);
+  font: inherit;
+}
+.admin-screen textarea {
+  display: block;
+  margin-top: 8px;
+  min-height: 90px;
+  resize: vertical;
+}
+.admin-item {
+  border-top: 1px solid var(--divider);
+  padding: 16px 0;
+}
+.admin-item h3 {
+  margin: 0;
+  font-size: 17px;
+  overflow-wrap: anywhere;
+}
+.admin-item small {
+  display: block;
+  line-height: 1.5;
+}
+.admin-item .ui-button {
+  margin-top: 12px;
+  width: fit-content;
+  min-height: 40px;
+  height: auto;
+  padding: 10px 16px;
+}
+.admin-notice {
+  color: var(--accent);
+}
+
+.admin-support { min-height:520px; border:1px solid var(--divider); border-radius:16px; overflow:hidden; background:var(--primary); }
+.admin-support-toolbar { display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 16px 10px; }
+.admin-support-toolbar strong,.admin-support-toolbar small { display:block; }
+.admin-support-toolbar small { margin-top:4px; color:var(--muted); font-size:12px; }
+.admin-support-refresh { display:inline-flex; align-items:center; gap:6px; min-height:36px; border:0; border-radius:10px; padding:0 11px; background:var(--secondary); color:var(--action-text); }
+.admin-support-filters { display:flex; gap:7px; padding:0 16px 12px; border-bottom:1px solid var(--divider); }
+.admin-support-filters button { border:0; border-radius:9px; padding:8px 11px; background:var(--secondary); color:var(--muted); }
+.admin-support-filters button[aria-selected='true'] { background:var(--accent); color:var(--on-accent); }
+.admin-support-error { margin:10px 14px; color:var(--danger); font-size:13px; }
+.admin-support-layout { display:grid; grid-template-columns:minmax(250px,34%) minmax(0,1fr); min-height:500px; }
+.admin-support-list { min-width:0; border-right:1px solid var(--divider); overflow-y:auto; }
+.admin-support-thread { display:grid; grid-template-columns:40px minmax(0,1fr) auto; align-items:center; gap:10px; width:100%; min-height:70px; padding:10px 12px; border:0; border-bottom:1px solid var(--divider); background:var(--primary); color:var(--text); text-align:left; }
+.admin-support-thread.is-active { background:var(--accent-soft); }
+.admin-support-avatar { display:grid; place-items:center; width:40px; height:40px; border-radius:13px; background:var(--secondary); color:var(--action-text); font-weight:700; }
+.admin-support-thread-copy { display:grid; min-width:0; gap:4px; }
+.admin-support-thread-copy strong,.admin-support-thread-copy small { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.admin-support-thread-copy small,.admin-support-thread>time { color:var(--muted); font-size:11px; }
+.admin-support-thread>time { font-size:9px; }
+.admin-support-chat { display:flex; min-width:0; flex-direction:column; }
+.admin-support-chat>.state-panel { margin:auto; }
+.admin-support-chat-head { display:flex; align-items:center; justify-content:space-between; gap:12px; min-height:62px; padding:10px 14px; border-bottom:1px solid var(--divider); }
+.admin-support-chat-head strong,.admin-support-chat-head small { display:block; }
+.admin-support-chat-head small { margin-top:4px; color:var(--muted); }
+.admin-support-messages { flex:1; min-height:300px; max-height:52vh; overflow-y:auto; padding:16px; background:var(--secondary); }
+.admin-support-message { width:max-content; max-width:min(78%,520px); margin:8px 0; padding:9px 11px 7px; border-radius:15px; background:var(--primary); overflow-wrap:anywhere; }
+.admin-support-message--staff { margin-left:auto; background:var(--accent-soft); }
+.admin-support-message>small { display:block; margin-bottom:4px; color:var(--muted); font-size:10px; }
+.admin-support-message p { margin:0; line-height:1.45; white-space:pre-wrap; }
+.admin-support-message time { display:block; margin-top:5px; color:var(--muted); font-size:9px; text-align:right; }
+.admin-support-message img,.admin-support-message video { display:block; max-width:min(100%,380px); max-height:360px; margin-bottom:7px; border-radius:10px; object-fit:contain; background:#000; }
+.admin-support-media-loading,.admin-support-media-error { display:block; margin-bottom:7px; color:var(--muted); font-size:11px; }
+.admin-support-composer { padding:10px 12px; border-top:1px solid var(--divider); }
+.admin-support-composer-row { display:flex; align-items:flex-end; gap:8px; }
+.admin-support-composer textarea { flex:1; min-height:42px; max-height:120px; margin:0; resize:vertical; }
+.admin-support-attach { display:grid; place-items:center; width:42px; height:42px; flex:none; border:0; border-radius:12px; background:var(--secondary); color:var(--action-text); }
+.admin-support-file { display:flex; align-items:center; gap:8px; margin-bottom:7px; padding:7px 9px; border-radius:10px; background:var(--secondary); color:var(--muted); font-size:12px; }
+.admin-support-file span { flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.admin-support-file button { display:grid; place-items:center; width:26px; height:26px; border:0; background:transparent; color:var(--muted); }
+@media (max-width:720px) { .admin-support-layout{display:block}.admin-support-list{max-height:280px;border-right:0;border-bottom:1px solid var(--divider)}.admin-support-messages{max-height:50vh} }

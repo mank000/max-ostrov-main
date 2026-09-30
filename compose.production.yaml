@@ -1,0 +1,17 @@
+name: ostrov
+services:
+  api:
+    build:
+      target: production
+    environment:
+      KUTEZH_PUBLIC_URL: https://${APP_DOMAIN:?Set APP_DOMAIN in .env}
+      KUTEZH_MODERATION_URL: https://${MODERATION_DOMAIN:?Set MODERATION_DOMAIN in .env}
+      KUTEZH_BOT_TOKEN: ${KUTEZH_BOT_TOKEN:?Set KUTEZH_BOT_TOKEN in .env}
+      KUTEZH_SUPPORT_OWNER_MAX_ID: ${KUTEZH_SUPPORT_OWNER_MAX_ID:-}
+      KUTEZH_MAINTENANCE_ALLOWED_IDS: ${KUTEZH_MAINTENANCE_ALLOWED_IDS:-}
+      KUTEZH_MODERATION_HOST: ${MODERATION_DOMAIN:?Set MODERATION_DOMAIN in .env}
+      KUTEZH_SESSION_COOKIE_SECURE: "true"
+      KUTEZH_FACE_AI_URL: ${KUTEZH_FACE_AI_URL:-http://face-ai:8091/analyze}
+      KUTEZH_IMAGE_AI_URL: ${KUTEZH_IMAGE_AI_URL:-http://image-ai:8093/analyze}
+      KUTEZH_TEXT_AI_URL: ${KUTEZH_TEXT_AI_URL:-http://text-ai:8092/analyze}
+      KUTEZH_TEXT_AI_MODE: enforce

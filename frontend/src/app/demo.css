@@ -1,0 +1,24 @@
+.demo-login {
+  width: min(100%, 440px);
+  margin: auto;
+  padding: 40px 24px;
+  color: var(--text-primary, #17191d);
+}
+.demo-login h1 { margin: 16px 0 8px; font-size: 32px; }
+.demo-login p { line-height: 1.5; }
+.demo-label { font-size: 13px; opacity: .7; }
+.demo-accounts { display: grid; gap: 10px; margin: 24px 0; }
+.demo-accounts button {
+  display: flex; justify-content: space-between; gap: 16px;
+  padding: 16px; border: 1px solid currentColor; border-radius: 12px;
+  color: inherit; background: transparent; cursor: pointer; text-align: left;
+}
+.demo-accounts button:disabled { opacity: .5; cursor: wait; }
+.demo-accounts button:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.demo-accounts span { font-size: 13px; }
+.demo-explanation { font-size: 13px; opacity: .7; }
+.demo-badge {
+  position: fixed; top: max(6px, env(safe-area-inset-top)); left: 50%; transform: translateX(-50%);
+  z-index: 10000; padding: 3px 10px; border-radius: 6px; font-size: 11px;
+  background: #fff4d1; color: #382a09; pointer-events: none;
+}

@@ -1,0 +1,229 @@
+openapi: 3.0.3
+info:
+  title: Kutezh Dating API
+  version: 0.2.0
+  description: Dating data are separate; identity and public profile fields come from the main Kutezh API.
+servers:
+  - url: /
+security:
+  - KutezhSession: []
+  - MainCookie: []
+paths:
+  /health:
+    get:
+      security: []
+      responses:
+        '200': {description: Healthy}
+  /auth:
+    post:
+      summary: Verify main Mini App identity and refresh shared profile snapshot
+      responses:
+        '200':
+          description: Current account and dating opt-in state
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Session'}
+        '401': {description: Main Mini App authentication failed}
+        '503': {description: Main profile API unavailable}
+  /me:
+    get:
+      summary: Read dating settings, or null before opt-in
+      responses:
+        '200':
+          description: Dating profile or null
+          content:
+            application/json:
+              schema:
+                nullable: true
+                allOf:
+                  - {$ref: '#/components/schemas/Profile'}
+    put:
+      summary: Opt in or update dating settings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: {$ref: '#/components/schemas/ProfileSettings'}
+      responses:
+        '200':
+          description: Updated dating profile
+          content:
+            application/json:
+              schema: {$ref: '#/components/schemas/Profile'}
+        '400': {description: Age range is invalid, or adult confirmation is missing for an 18+ profile}
+        '403': {description: Main profile age is below 14 or required profile data are missing}
+    delete:
+      summary: Delete dating account and dependent dating data; keep main Kutezh account
+      responses:
+        '200': {description: Dating data deleted}
+  /discover:
+    get:
+      summary: Up to 30 mutually eligible profiles from the same age pool, excluding swiped, blocked and personally reported accounts
+      description: Users 14–17 only see other users 14–17; users 18+ only see users 18+. Profiles with more reports are ranked lower; among equal report levels profiles with more common interests are ranked higher.
+      responses:
+        '200':
+          description: Discovery cards
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {$ref: '#/components/schemas/PublicProfile'}
+  /swipe:
+    post:
+      summary: Like or pass; mutual like creates one match atomically
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [user_id, kind]
+              properties:
+                user_id: {type: integer}
+                kind: {type: string, enum: [like, pass]}
+      responses:
+        '200':
+          description: Whether a new match was created
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [match]
+                properties:
+                  match: {type: boolean}
+                  match_id: {type: integer, nullable: true}
+        '403': {description: Profile unavailable or outside reciprocal filters}
+        '409': {description: An earlier swipe cannot be changed}
+  /matches:
+    get:
+      responses:
+        '200':
+          description: Visible matches
+          content:
+            application/json:
+              schema:
+                type: array
+                items: {$ref: '#/components/schemas/Match'}
+  /matches/{match_id}/chat:
+    parameters:
+      - name: match_id
+        in: path
+        required: true
+        schema: {type: integer}
+    get:
+      summary: Resolve MAX chat for a visible mutual match
+      responses:
+        '200':
+          description: MAX chat target
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [max_chat_id]
+                properties:
+                  max_chat_id: {type: string}
+        '403': {description: Match blocked or profile paused}
+        '409': {description: MAX chat is not linked yet}
+        '503': {description: Friendship or MAX chat sync unavailable}
+  /block/{other_id}:
+    post:
+      parameters:
+        - name: other_id
+          in: path
+          required: true
+          schema: {type: integer}
+      responses:
+        '200': {description: User blocked and chat hidden}
+  /report:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [user_id, reason]
+              properties:
+                user_id: {type: integer}
+                reason: {type: string, minLength: 2, maxLength: 300}
+      responses:
+        '200': {description: Report recorded; this reporter will no longer see the profile and the profile receives a ranking penalty for other users}
+components:
+  securitySchemes:
+    KutezhSession: {type: apiKey, in: header, name: X-Kutezh-Session}
+    MainCookie: {type: apiKey, in: header, name: Cookie}
+  schemas:
+    PublicProfile:
+      type: object
+      required: [user_id, name, age, gender, city, bio, goal, photo]
+      properties:
+        user_id: {type: integer}
+        name: {type: string}
+        age: {type: integer}
+        gender: {type: string, enum: [man, woman]}
+        city: {type: string}
+        bio: {type: string}
+        goal: {type: string, enum: [chat, date, relationship]}
+        photo: {type: string}
+        verification_tier: {type: string, enum: [none, age, full], description: none = no selfie verification; age = yellow age-only check; full = blue selfie-to-profile-photo match}
+        religion: {type: string, enum: [orthodox, catholic, islam, buddhism, judaism, atheism, agnostic, other]}
+        smoking: {type: string, enum: [no, sometimes, yes]}
+        drinking: {type: string, enum: [no, sometimes, yes]}
+        worldview: {type: string, enum: [traditional, modern, balanced, spiritual, rational, no_label]}
+        interests:
+          type: array
+          maxItems: 8
+          uniqueItems: true
+          items: {type: string}
+    Profile:
+      allOf:
+        - {$ref: '#/components/schemas/PublicProfile'}
+        - type: object
+          required: [show_gender, min_age, max_age, is_paused]
+          properties:
+            show_gender: {type: string, enum: [all, man, woman]}
+            min_age: {type: integer, minimum: 14, maximum: 100, description: Must stay within the caller's age pool (14–17 or 18–100)}
+            max_age: {type: integer, minimum: 14, maximum: 100, description: Must stay within the caller's age pool (14–17 or 18–100)}
+            same_city_only: {type: boolean}
+            verified_only: {type: boolean, description: Show only profiles with verification_tier=full}
+            is_paused: {type: boolean}
+    ProfileSettings:
+      type: object
+      properties:
+        goal: {type: string, enum: [chat, date, relationship]}
+        religion: {type: string, enum: ['', orthodox, catholic, islam, buddhism, judaism, atheism, agnostic, other]}
+        smoking: {type: string, enum: ['', no, sometimes, yes]}
+        drinking: {type: string, enum: ['', no, sometimes, yes]}
+        worldview: {type: string, enum: ['', traditional, modern, balanced, spiritual, rational, no_label]}
+        interests:
+          type: array
+          maxItems: 8
+          uniqueItems: true
+          items: {type: string}
+        show_gender: {type: string, enum: [all, man, woman]}
+        min_age: {type: integer, minimum: 14, maximum: 100, description: 14–17 for teen profiles; 18–100 for adult profiles}
+        max_age: {type: integer, minimum: 14, maximum: 100, description: 14–17 for teen profiles; 18–100 for adult profiles}
+        same_city_only: {type: boolean}
+        verified_only: {type: boolean, description: Show only profiles with the blue full verification tier}
+        is_paused: {type: boolean}
+        adult_confirmed: {type: boolean, description: Required to be true for users 18+; ignored for users 14–17}
+    Session:
+      type: object
+      required: [user_id, name, demo, source, profile]
+      properties:
+        user_id: {type: integer}
+        name: {type: string}
+        demo: {type: boolean, description: True only for local preview with synthetic profile data}
+        source:
+          nullable: true
+          allOf: [{$ref: '#/components/schemas/PublicProfile'}]
+        profile:
+          nullable: true
+          allOf: [{$ref: '#/components/schemas/Profile'}]
+    Match:
+      allOf:
+        - {$ref: '#/components/schemas/PublicProfile'}
+        - type: object
+          required: [match_id]
+          properties:
+            match_id: {type: integer}

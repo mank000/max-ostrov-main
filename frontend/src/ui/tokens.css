@@ -1,0 +1,274 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', sans-serif;
+  font-synthesis: none;
+  color-scheme: light;
+  --text: #060708;
+  --hint: #7d7e7f;
+  --primary: #fff;
+  --card: #fff;
+  --accent-text: #0070e5;
+  --action-text: #0068d1;
+  --muted: #565758;
+  --accent: #007aff;
+  --divider: #e4e5e7;
+  --accent-soft: #e8f2ff;
+  --secondary: #f5f7fa;
+  --on-accent: #fff;
+  --danger: #cc1a1a;
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --text: #fff;
+  --hint: #aaaaad;
+  --primary: #17181c;
+  --card: #17181c;
+  --accent-text: #5eadff;
+  --action-text: #5eadff;
+  --muted: #cbccce;
+  --accent: #007aff;
+  --divider: #36373d;
+  --accent-soft: #172d49;
+  --secondary: #25262d;
+  --on-accent: #fff;
+  --danger: #ff6464;
+}
+
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+  margin: 0;
+  overscroll-behavior: none;
+  overflow: hidden;
+  touch-action: pan-x pan-y;
+}
+#root {
+  position: fixed;
+  inset: 0;
+}
+body {
+  background: var(--primary);
+  color: var(--text);
+  overflow: hidden;
+}
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+a {
+  color: var(--action-text);
+}
+
+.app-shell {
+  height: 100%;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding-bottom: 0;
+  background: var(--primary);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+:root[data-keyboard-open='true'] .app-shell {
+  padding-bottom: var(--keyboard-height, 0px);
+}
+:root[data-keyboard-open='true'] .bottom-navigation {
+  display: none;
+}
+:root[data-keyboard-open='true'] .map-host {
+  bottom: 0;
+}
+:root[data-keyboard-open='true'] .bottom-action {
+  padding-bottom: 10px;
+}
+.app-content {
+  position: relative;
+  isolation: isolate;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  overscroll-behavior: none;
+}
+.route-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--primary);
+  backface-visibility: hidden;
+  transform: translate3d(0, 0, 0);
+}
+.route-layer[data-layer-role='background'] {
+  z-index: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+.route-layer[data-layer-role='previous'] {
+  z-index: 1;
+  pointer-events: none;
+  transform: translate3d(-18%, 0, 0);
+}
+.route-layer[data-layer-role='current'] {
+  z-index: 2;
+  pointer-events: auto;
+}
+.route-layer[data-view='map'] {
+  background: transparent;
+  pointer-events: none;
+}
+/* Keep the map dock pinned to the bottom while the map route is pre-rendered
+   as the previous layer during push/pop transitions. */
+.route-layer[data-view='map'] .bottom-navigation {
+  width: 100%;
+  margin-top: auto;
+}
+.route-layer[data-layer-role='current'][data-view='map'] .bottom-navigation {
+  pointer-events: auto;
+}
+.map-host {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: calc(60px + max(env(safe-area-inset-bottom), 24px));
+  left: 0;
+  z-index: 0;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  pointer-events: auto;
+}
+.map-host[hidden] {
+  display: none !important;
+}
+.screen-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior-x: none;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  overflow-anchor: none;
+  scroll-padding: 16px 0;
+}
+.screen-scroll::-webkit-scrollbar {
+  display: none;
+}
+.page-pad {
+  padding: 0 16px;
+}
+.section-title {
+  margin: 0;
+  padding: 16px;
+  font-size: 17px;
+  line-height: 20px;
+  font-weight: 590;
+}
+.bottom-action {
+  flex: none;
+  background: var(--primary);
+  border-top: 1px solid var(--divider);
+  padding: 10px 16px max(env(safe-area-inset-bottom), 24px);
+}
+.hint-text {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+.error-text {
+  color: var(--danger);
+  font-size: 13px;
+  line-height: 18px;
+}
+.app-toast {
+  position: fixed;
+  z-index: 25;
+  right: max(16px, calc((100vw - 600px) / 2 + 16px));
+  bottom: calc(76px + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: min(320px, calc(100vw - 32px));
+  padding: 10px 14px;
+  border: 1px solid color-mix(in srgb, #1d9659 35%, var(--divider));
+  border-radius: 12px;
+  background: var(--primary);
+  color: #18834b;
+  box-shadow: 0 8px 24px #0002;
+  font-size: 14px;
+  font-weight: 600;
+  pointer-events: none;
+}
+:root[data-theme='dark'] .app-toast {
+  color: #68d69a;
+}
+.media-viewer {
+  flex: 1;
+  min-height: 0;
+  position: relative;
+  display: grid;
+  place-items: center;
+  background: #060708;
+}
+.media-viewer__count {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: #fff;
+  font-size: 15px;
+  line-height: 20px;
+}
+.media-viewer__download {
+  position: absolute;
+  right: 16px;
+  bottom: max(env(safe-area-inset-bottom), 24px);
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 12px;
+  background: var(--secondary);
+  color: var(--text);
+}
+.media-viewer img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+/* Native image dragging must not compete with scrolling or app gestures. */
+img { -webkit-user-drag:none; user-select:none; }

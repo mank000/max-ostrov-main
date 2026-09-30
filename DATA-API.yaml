@@ -1,0 +1,153 @@
+schemaVersion: "1.0"
+solution:
+  name: "Кутёж"
+api:
+  baseUrl: "https://kutezh-social.ru"
+  openapi: "./openapi.yaml"
+  defaultHeaders:
+    Accept: "application/json"
+checks:
+  - id: health
+    name: Доступность API
+    method: GET
+    path: /api/v1/health
+    role: public
+    expected:
+      statusCodes: [200]
+      contentType: application/json
+      requiredFields: [status]
+    timeoutMs: 5000
+    repeatable: true
+
+  - id: location-config
+    name: Конфигурация поиска мест
+    method: GET
+    path: /api/v1/geocoding/config
+    role: public
+    expected:
+      statusCodes: [200]
+      contentType: application/json
+      requiredFields: [autocomplete]
+    timeoutMs: 5000
+    repeatable: true
+
+  - id: session
+    name: Сессия зарегистрированного пользователя MAX
+    method: GET
+    path: /api/v1/auth/session
+    role: registered_user
+    expected:
+      statusCodes: [200]
+      contentType: application/json
+      requiredFields: [user, expires_at]
+    timeoutMs: 5000
+    repeatable: true
+
+  - id: profile
+    name: Общий профиль
+    method: GET
+    path: /api/v1/users/me
+    role: registered_user
+    expected:
+      statusCodes: [200]
+      contentType: application/json
+      requiredFields: [id, display_name, city, onboarding_version]
+    timeoutMs: 5000
+    repeatable: true
+
+  - id: events
+    name: Список мероприятий
+    method: GET
+    path: /api/v1/events
+    role: registered_user
+    expected:
+      statusCodes: [200]
+      contentType: application/json
+      requiredFields: [events]
+    timeoutMs: 5000
+    repeatable: true
+
+  - id: event-categories
+    name: Категории мероприятий
+    method: GET
+    path: /api/v1/events/categories
+    role: registered_user
+    expected:
+      statusCodes: [200]
+      contentType: application/json
+      requiredFields: [categories]
+    timeoutMs: 5000
+    repeatable: true
+
+  - id: create-event
+    name: Создание тестового мероприятия
+    description: Создаётся выделенным аккаунтом и удаляется после проверки.
+    method: POST
+    path: /api/v1/events
+    role: registered_user
+    request:
+      headers:
+        Content-Type: application/json
+        Idempotency-Key: submission-event-2035-001
+      body:
+        title: Тестовое мероприятие проверки
+        description: Тестовое событие для автоматической проверки API.
+        category: Встречи
+        starts_at: "2035-05-18T12:00:00Z"
+        location:
+          venue_name: Тестовая площадка
+          address: Пример адреса
+          city: Барнаул
+          latitude: 53.3474
+          longitude: 83.7784
+    expected:
+      statusCodes: [201]
+      contentType: application/json
+      requiredFields: [id, title, starts_at, location]
+    timeoutMs: 10000
+    repeatable: false
+    extract:
+      eventId: "$.id"
+
+  - id: read-event
+    name: Карточка созданного мероприятия
+    method: GET
+    path: /api/v1/events/{eventId}
+    role: registered_user
+    dependsOn: [create-event]
+    request:
+      path:
+        eventId: "${eventId}"
+    expected:
+      statusCodes: [200]
+      contentType: application/json
+      requiredFields: [id, title, starts_at, location]
+    timeoutMs: 5000
+    repeatable: true
+
+  - id: feed
+    name: Общая лента
+    method: GET
+    path: /api/v1/feed
+    role: registered_user
+    request:
+      query:
+        scope: all
+    expected:
+      statusCodes: [200]
+      contentType: application/json
+      requiredFields: [posts]
+    timeoutMs: 10000
+    repeatable: true
+
+cleanup:
+  - id: delete-event
+    method: DELETE
+    path: /api/v1/events/{eventId}
+    role: registered_user
+    request:
+      path:
+        eventId: "${eventId}"
+    expected:
+      statusCodes: [204, 404]
+    timeoutMs: 5000

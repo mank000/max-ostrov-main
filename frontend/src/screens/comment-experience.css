@@ -1,0 +1,27 @@
+.comment-media-grid__open img,
+.comment-media-grid__open video {
+  object-fit: contain;
+}
+.comment-media-grid__item {
+  width: 100%;
+}
+.comment-media-grid--1 .comment-media-grid__item {
+  max-height: 320px;
+}
+.comment-item[data-just-submitted='true'] {
+  background: var(--secondary);
+}
+.comment-item {
+  scroll-margin-top: 12px;
+}
+.comment-item:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.tag-picker-summary {
+  margin: 0;
+  padding: 4px 16px 12px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}

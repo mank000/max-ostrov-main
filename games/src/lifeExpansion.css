@@ -1,0 +1,619 @@
+.games-root .life-subnav {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  display: flex;
+  gap: 4px;
+  margin: 0 0 10px;
+  padding: 4px;
+  border: 1px solid var(--divider);
+  border-radius: 13px;
+  background: color-mix(in srgb, var(--primary) 94%, transparent);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.games-root .life-subnav button {
+  min-width: 0;
+  min-height: 34px;
+  flex: 1;
+  padding: 6px 8px;
+  border: 0;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 610;
+}
+
+.games-root .life-subnav button[aria-selected='true'] {
+  background: var(--secondary);
+  color: var(--text);
+}
+
+.games-root .life-subnav button:active {
+  transform: none;
+  opacity: .7;
+}
+
+.games-root .life-career-current__main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.games-root .life-career-current__main > div {
+  min-width: 0;
+}
+
+.games-root .life-career-current__main span,
+.games-root .life-market-row > div:first-child > span,
+.games-root .life-department-list article span {
+  display: block;
+  color: var(--hint);
+  font-size: 10px;
+  line-height: 15px;
+  text-transform: uppercase;
+  letter-spacing: .03em;
+}
+
+.games-root .life-career-current__main h3 {
+  margin: 3px 0 0;
+  font-size: 18px;
+  line-height: 23px;
+  font-weight: 670;
+}
+
+.games-root .life-career-current__main p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.games-root .life-career-current__main > strong {
+  flex: none;
+  min-width: 54px;
+  padding: 7px 9px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  text-align: center;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.games-root .life-inline-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  margin-top: 14px;
+}
+
+.games-root .life-inline-actions button,
+.games-root .life-money-actions button,
+.games-root .life-stack-actions button {
+  min-height: 38px;
+  border: 0;
+  border-radius: 10px;
+  padding: 7px 10px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  font-size: 11px;
+  line-height: 15px;
+  font-weight: 620;
+}
+
+.games-root .life-inline-actions .is-muted,
+.games-root .life-money-actions .is-muted,
+.games-root .life-stack-actions .is-muted {
+  background: var(--secondary);
+  color: var(--muted);
+}
+
+.games-root .life-inline-actions button:disabled,
+.games-root .life-money-actions button:disabled,
+.games-root .life-stack-actions button:disabled {
+  cursor: default;
+  opacity: .36;
+}
+
+.games-root .life-filter-row {
+  display: flex;
+  gap: 6px;
+  margin: 0 -2px 11px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding: 2px;
+}
+
+.games-root .life-filter-row::-webkit-scrollbar {
+  display: none;
+}
+
+.games-root .life-filter-row button {
+  flex: none;
+  min-height: 32px;
+  padding: 5px 10px;
+  border: 0;
+  border-radius: 9px;
+  background: var(--secondary);
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 590;
+}
+
+.games-root .life-filter-row button[aria-pressed='true'] {
+  background: var(--accent-soft);
+  color: var(--accent-text);
+}
+
+.games-root .life-career-list,
+.games-root .life-department-list {
+  display: grid;
+}
+
+.games-root .life-market-row {
+  min-height: 88px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 0;
+  border-top: 1px solid var(--divider);
+}
+
+.games-root .life-market-row:first-child {
+  border-top: 0;
+}
+
+.games-root .life-market-row > div:first-child {
+  min-width: 0;
+  flex: 1;
+}
+
+.games-root .life-market-row > div:first-child > strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 640;
+}
+
+.games-root .life-market-row p {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 17px;
+}
+
+.games-root .life-market-row small {
+  display: block;
+  margin-top: 6px;
+  color: var(--hint);
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.games-root .life-market-row em {
+  display: block;
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 15px;
+  font-style: normal;
+}
+
+.games-root .life-market-row > button {
+  flex: none;
+  min-width: 88px;
+  min-height: 35px;
+  margin-top: 2px;
+  border: 0;
+  border-radius: 10px;
+  padding: 6px 9px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  font-size: 11px;
+  font-weight: 620;
+}
+
+.games-root .life-market-row > button:disabled {
+  opacity: .36;
+}
+
+.games-root .life-stack-actions {
+  flex: none;
+  min-width: 100px;
+  display: grid;
+  justify-items: stretch;
+  gap: 6px;
+}
+
+.games-root .life-stack-actions > b {
+  color: var(--text);
+  text-align: right;
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 650;
+  white-space: nowrap;
+}
+
+.games-root .life-finance-note {
+  margin-top: 12px;
+  margin-bottom: 0;
+}
+
+.games-root .life-money-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.games-root .life-money-actions button {
+  flex: 1 1 110px;
+}
+
+.games-root .life-credit-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.games-root .life-credit-grid > div {
+  min-width: 0;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--secondary);
+}
+
+.games-root .life-credit-grid > div > strong {
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.games-root .life-credit-grid > div > p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 16px;
+}
+
+.games-root .life-network-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.games-root .life-network-grid > div {
+  min-width: 0;
+  padding: 9px;
+  border-radius: 10px;
+  background: var(--secondary);
+}
+
+.games-root .life-network-grid span {
+  display: block;
+  min-height: 28px;
+  color: var(--muted);
+  font-size: 9px;
+  line-height: 13px;
+}
+
+.games-root .life-network-grid strong {
+  display: block;
+  margin-top: 3px;
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+.games-root .life-world .life-facts {
+  margin-top: 2px;
+}
+
+.games-root .life-industry-grid,
+.games-root .life-region-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+}
+
+.games-root .life-industry-grid button,
+.games-root .life-region-grid button {
+  min-height: 105px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 11px;
+  border: 1px solid var(--divider);
+  border-radius: 12px;
+  background: var(--primary);
+  text-align: left;
+}
+
+.games-root .life-industry-grid button[aria-pressed='true'],
+.games-root .life-region-grid button[aria-pressed='true'] {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--divider));
+  background: var(--accent-soft);
+}
+
+.games-root .life-industry-grid button:disabled,
+.games-root .life-region-grid button:disabled {
+  opacity: .48;
+}
+
+.games-root .life-industry-grid strong,
+.games-root .life-region-grid strong {
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.games-root .life-industry-grid span,
+.games-root .life-region-grid span {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.games-root .life-industry-grid small,
+.games-root .life-region-grid small {
+  margin-top: auto;
+  padding-top: 7px;
+  color: var(--hint);
+  font-size: 9px;
+  line-height: 13px;
+}
+
+.games-root .life-department-list article {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-top: 1px solid var(--divider);
+}
+
+.games-root .life-department-list article:first-child {
+  border-top: 0;
+}
+
+.games-root .life-department-list article > div {
+  min-width: 0;
+  flex: 1;
+}
+
+.games-root .life-department-list article strong {
+  display: block;
+  margin-top: 2px;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+.games-root .life-department-list article p {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.games-root .life-department-list article button {
+  flex: none;
+  min-width: 90px;
+  min-height: 35px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  font-size: 10px;
+  font-weight: 620;
+}
+
+.games-root .life-department-list article button:disabled {
+  opacity: .36;
+}
+
+.games-root .life-investment-row {
+  min-height: 104px;
+}
+
+@media (min-width: 760px) {
+  .games-root .life-career-list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 18px;
+  }
+
+  .games-root .life-career-list .life-market-row:nth-child(2) {
+    border-top: 0;
+  }
+
+  .games-root .life-industry-grid,
+  .games-root .life-region-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .games-root .life-department-list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 18px;
+  }
+
+  .games-root .life-department-list article:nth-child(2) {
+    border-top: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .games-root .life-credit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .games-root .life-network-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .games-root .life-market-row {
+    gap: 8px;
+  }
+
+  .games-root .life-stack-actions {
+    min-width: 88px;
+  }
+}
+
+@media (max-width: 380px) {
+  .games-root .life-industry-grid,
+  .games-root .life-region-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .games-root .life-market-row {
+    display: grid;
+  }
+
+  .games-root .life-market-row > button,
+  .games-root .life-stack-actions {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .games-root .life-stack-actions > b {
+    text-align: left;
+  }
+}
+
+
+.games-root .life-roadmap-progress {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--secondary);
+}
+
+.games-root .life-roadmap-progress > i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.games-root .life-roadmap-summary {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 9px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.games-root .life-roadmap-summary strong {
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: 650;
+}
+
+.games-root .life-roadmap-summary span {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 15px;
+  text-align: right;
+}
+
+.games-root .life-roadmap-list {
+  display: grid;
+}
+
+.games-root .life-roadmap-row {
+  display: grid;
+  grid-template-columns: 30px minmax(0, 1fr);
+  gap: 10px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.games-root .life-roadmap-row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.games-root .life-roadmap-row > b {
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--divider);
+  border-radius: 50%;
+  background: var(--secondary);
+  color: var(--accent-text);
+  font-size: 10px;
+  line-height: 1;
+}
+
+.games-root .life-roadmap-row > div > strong {
+  display: block;
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: 640;
+}
+
+.games-root .life-roadmap-row p {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.games-root .life-roadmap-row span {
+  display: block;
+  margin-top: 5px;
+  color: var(--hint);
+  font-size: 9px;
+  line-height: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.games-root .life-roadmap-row > div > div {
+  height: 4px;
+  margin-top: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--secondary);
+}
+
+.games-root .life-roadmap-row > div > div > i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.games-root .life-roadmap-finished {
+  padding: 16px 0 4px;
+  text-align: center;
+}
+
+.games-root .life-roadmap-finished strong {
+  font-size: 14px;
+  line-height: 19px;
+}
+
+.games-root .life-roadmap-finished p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 15px;
+}
+
+@media (max-width: 420px) {
+  .games-root .life-roadmap-summary {
+    display: grid;
+  }
+
+  .games-root .life-roadmap-summary span {
+    text-align: left;
+  }
+}

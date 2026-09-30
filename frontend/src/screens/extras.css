@@ -1,0 +1,43 @@
+@import './styles/extra-pages.css';
+@import './styles/economy.css';
+@import './styles/achievements.css';
+@import './styles/gift-history.css';
+@import './styles/gift-picker.css';
+@import './styles/gift-details.css';
+@import './styles/media-thumbnails.css';
+@import './styles/notifications.css';
+@import './styles/groups.css';
+
+.language-filter-row { display:flex; align-items:center; gap:16px; padding:16px; }
+.language-filter-row > div { flex:1; min-width:0; }
+.language-filter-row strong { font-size:15px; }
+.language-filter-row p { margin:6px 0 0; font-size:13px; line-height:1.4; color:var(--muted); }
+.privacy-switch-row { display:flex; align-items:center; gap:16px; padding:16px; }
+.privacy-switch-row > div { flex:1; min-width:0; }
+.privacy-switch-row strong { font-size:15px; }
+.privacy-switch-row p { margin:6px 0 0; font-size:13px; line-height:1.45; color:var(--muted); }
+.privacy-section-note { margin:-6px 16px 8px; font-size:13px; line-height:1.4; color:var(--muted); }
+.privacy-inline-switch.check-control { width:auto; flex:none; }
+.privacy-inline-switch .check-control__label { position:absolute; width:1px; height:1px; clip-path:inset(50%); overflow:hidden; }
+.settings-verification-check--age { color: #a66c00; }
+.settings-verification-check--full { color: #0a84ff; }
+:root[data-theme='dark'] .settings-verification-check--age { color: #f0bf43; }
+:root[data-theme='dark'] .settings-verification-check--full { color: #64b5ff; }
+
+.settings-verification-group--noted > .cell {
+  border-bottom: 0;
+}
+
+.settings-verification-note {
+  margin: 4px 16px 16px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: var(--secondary);
+}
+.settings-verification-note strong { display:block; font-size:13px; line-height:18px; }
+.settings-verification-note--age strong { color:#9a6500; }
+.settings-verification-note--full strong { color:var(--accent-text); }
+.settings-verification-note p { margin:4px 0 0; color:var(--muted); font-size:12px; line-height:17px; }
+.settings-verification-note .settings-verification-help { margin-top:8px; padding-top:8px; border-top:1px solid var(--divider); }
+.settings-verification-help code { color:var(--accent-text); font:inherit; font-weight:650; }
+:root[data-theme='dark'] .settings-verification-note--age strong { color:#f0bf43; }

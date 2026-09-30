@@ -1,0 +1,184 @@
+.support-screen {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  background: var(--secondary);
+}
+.support-thread {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: 16px max(14px, calc((100% - 720px) / 2)) 22px;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.support-thread::-webkit-scrollbar { display: none; }
+.support-intro {
+  display: flex;
+  gap: 12px;
+  max-width: 620px;
+  margin: 0 auto 18px;
+  padding: 14px;
+  border: 1px solid var(--divider);
+  border-radius: 16px;
+  background: var(--primary);
+}
+.support-intro__icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: none;
+  border-radius: 13px;
+  background: var(--accent-soft);
+  color: var(--action-text);
+}
+.support-intro strong { display: block; font-size: 15px; }
+.support-intro p {
+  margin: 4px 0 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 18px;
+}
+.support-message {
+  width: max-content;
+  max-width: min(82%, 520px);
+  margin: 8px 0;
+  padding: 9px 11px 7px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 19px;
+  overflow-wrap: anywhere;
+}
+.support-message--staff {
+  margin-right: auto;
+  border: 1px solid var(--divider);
+  border-bottom-left-radius: 6px;
+  background: var(--primary);
+  color: var(--text);
+}
+.support-message--mine {
+  margin-left: auto;
+  border-bottom-right-radius: 6px;
+  background: var(--accent);
+  color: var(--on-accent);
+}
+.support-message__author {
+  margin-bottom: 4px;
+  color: var(--hint);
+  font-size: 11px;
+  font-weight: 650;
+}
+.support-message--mine .support-message__author { color: #ffffffb8; }
+.support-message p { margin: 0; white-space: pre-wrap; }
+.support-message time {
+  display: block;
+  margin-top: 4px;
+  color: var(--hint);
+  font-size: 10px;
+  line-height: 13px;
+  text-align: right;
+}
+.support-message--mine time { color: #ffffffad; }
+.support-message__media { display: grid; gap: 6px; margin-bottom: 6px; }
+.support-message__media img,
+.support-message__media video {
+  display: block;
+  max-width: min(100%, 360px);
+  max-height: 420px;
+  border-radius: 11px;
+  object-fit: contain;
+  background: #000;
+}
+.support-empty,
+.support-closed {
+  max-width: 520px;
+  margin: 18px auto;
+  color: var(--hint);
+  font-size: 13px;
+  line-height: 18px;
+  text-align: center;
+}
+.support-composer {
+  flex: none;
+  padding: 8px 12px max(10px, env(safe-area-inset-bottom));
+  border-top: 1px solid var(--divider);
+  background: var(--primary);
+}
+.support-composer__row {
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.support-composer textarea {
+  flex: 1;
+  min-width: 0;
+  min-height: 42px;
+  max-height: 112px;
+  padding: 10px 12px;
+  border: 1px solid var(--divider);
+  border-radius: 15px;
+  outline: 0;
+  resize: none;
+  background: var(--secondary);
+  color: var(--text);
+  line-height: 20px;
+}
+.support-composer textarea:focus { border-color: var(--accent); }
+.support-attach,
+.support-send,
+.support-file button {
+  display: grid;
+  place-items: center;
+  flex: none;
+  border: 0;
+}
+.support-attach,
+.support-send {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+}
+.support-attach { background: var(--secondary); color: var(--action-text); }
+.support-send { background: var(--accent); color: var(--on-accent); }
+.support-file-input { display: none; }
+.support-file {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 720px;
+  min-height: 34px;
+  margin: 0 auto 7px;
+  padding: 6px 8px 6px 10px;
+  border-radius: 11px;
+  background: var(--secondary);
+  color: var(--muted);
+  font-size: 12px;
+}
+.support-file span {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.support-file button {
+  width: 26px;
+  height: 26px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+}
+.support-error {
+  max-width: 720px;
+  margin: 0 auto 7px;
+  color: var(--danger);
+  font-size: 12px;
+}
+@media (min-width: 960px) {
+  .support-message { max-width: min(68%, 560px); }
+  .support-composer { padding-bottom: 14px; }
+}

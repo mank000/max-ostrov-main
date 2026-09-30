@@ -1,0 +1,207 @@
+.games-root .life-shell { max-width: 720px; background: #f5f7fa; }
+.games-root .life-screen {
+  --life-v2-bg: #f5f7fa;
+  --life-v2-surface: #fff;
+  --life-v2-text: #111318;
+  --life-v2-muted: #59616e;
+  --life-v2-line: #e1e5ea;
+  --life-v2-soft: #eef1f5;
+  --life-v2-blue: #007aff;
+  --life-v2-blue-soft: #eef6ff;
+  --life-v2-blue-text: #006fe6;
+  --life-v2-shadow: 0 2px 8px rgb(0 0 0 / 6%);
+  background: var(--life-v2-bg);
+  color: var(--life-v2-text);
+}
+[data-theme='dark'] .games-root .life-screen,
+.games-root[data-theme='dark'] .life-screen {
+  --life-v2-bg: #20242b;
+  --life-v2-surface: #2b3039;
+  --life-v2-text: #f4f6f9;
+  --life-v2-muted: #abb4c0;
+  --life-v2-line: #404854;
+  --life-v2-soft: #363e49;
+  --life-v2-blue-soft: #172e49;
+  --life-v2-blue-text: #7abaff;
+  --life-v2-shadow: 0 2px 8px rgb(0 0 0 / 16%);
+}
+.games-root .life-header {
+  min-height: 56px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 0 16px 0 5px;
+  border: 0;
+  background: var(--life-v2-surface);
+  color: var(--life-v2-text);
+}
+.games-root .life-v2-heading { display: flex; align-items: center; min-width: 0; gap: 0; }
+.games-root .life-header h1 { overflow: hidden; font-size: 24px; line-height: 29px; font-weight: 700; letter-spacing: -.3px; text-overflow: ellipsis; white-space: nowrap; }
+.games-root .life-back { width: 38px; height: 44px; color: var(--life-v2-blue); }
+.games-root .life-header > .life-v2-balance { display: flex; align-items: center; gap: 4px; flex: none; font-size: 14px; line-height: 19px; font-weight: 600; color: var(--life-v2-text); white-space: nowrap; }
+.games-root .life-v2-balance img { width: 20px; height: 20px; }
+.games-root .life-scroll.life-game-layout { background: var(--life-v2-bg); }
+.games-root .life-v2-page {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 14px 24px 28px;
+}
+.games-root .life-v2-page > * { min-width: 0; flex: none; }
+.games-root .life-v2-home { gap: 10px; padding: 8px 24px 18px; }
+.games-root .life-v2-room { position: relative; width: 100%; height: 208px; overflow: hidden; border-radius: 20px; background: #d9e7ef; box-shadow: var(--life-v2-shadow); isolation: isolate; }
+.games-root .life-v2-home .life-v2-room { width: calc(100% + 16px); margin-left: -8px; height: 218px; }
+.games-root .life-v2-room-bg { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.games-root .life-v2-room-character { position: absolute; bottom: -8%; left: 50%; height: 104%; width: auto; max-width: none; transform: translateX(-50%); filter: drop-shadow(0 5px 5px rgb(40 42 46 / 22%)); }
+.games-root .life-v2-player { position: absolute; left: 12px; bottom: 12px; display: flex; flex-direction: column; gap: 1px; max-width: calc(100% - 96px); min-width: 205px; padding: 8px 10px; border-radius: 12px; background: var(--life-v2-surface); box-shadow: var(--life-v2-shadow); }
+.games-root .life-v2-player strong { font-size: 15px; line-height: 19px; }
+.games-root .life-v2-player span { overflow: hidden; color: var(--life-v2-muted); font-size: 12px; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.games-root .life-v2-level { position: absolute; right: 14px; top: 12px; padding: 6px 13px; border-radius: 999px; background: var(--life-v2-surface); color: var(--life-v2-blue-text); font-size: 13px; line-height: 17px; font-weight: 600; }
+.games-root .life-v2-needs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 7px; margin-inline: 4px; }
+.games-root .life-v2-need { min-width: 0; height: 66px; display: flex; flex-direction: column; gap: 2px; padding: 7px 6px; border-radius: 12px; background: var(--life-v2-surface); }
+.games-root .life-v2-need strong { display: flex; align-items: center; gap: 5px; font-size: 22px; line-height: 26px; letter-spacing: -.2px; }
+.games-root .life-v2-need strong i { width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--need-color); }
+.games-root .life-v2-need span { overflow: hidden; color: var(--life-v2-muted); font-size: 11px; line-height: 16px; letter-spacing: -.2px; text-overflow: ellipsis; white-space: nowrap; }
+.games-root .life-v2-need > div { height: 4px; overflow: hidden; border-radius: 2px; background: var(--life-v2-soft); }
+.games-root .life-v2-need > div i { display: block; height: 100%; border-radius: inherit; background: var(--need-color); }
+.games-root .life-v2-goal { width: 100%; min-height: 126px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 16px; border: 1px solid var(--life-v2-line); border-radius: 16px; background: var(--life-v2-surface); box-shadow: var(--life-v2-shadow); text-align: left; }
+.games-root .life-v2-goal > span, .games-root .life-v2-summary > span { color: var(--life-v2-blue-text); font-size: 13px; line-height: 17px; font-weight: 600; }
+.games-root .life-v2-goal h2, .games-root .life-v2-summary h2 { width: 100%; overflow: hidden; color: var(--life-v2-text); font-size: 20px; line-height: 24px; font-weight: 600; letter-spacing: -.2px; text-overflow: ellipsis; white-space: nowrap; }
+.games-root .life-v2-goal p, .games-root .life-v2-summary p { overflow: hidden; width: 100%; color: var(--life-v2-muted); font-size: 12px; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.games-root .life-v2-track { width: 100%; height: 6px; overflow: hidden; border-radius: 4px; background: var(--life-v2-soft); }
+.games-root .life-v2-track i { display: block; height: 100%; border-radius: inherit; background: var(--life-v2-blue); }
+.games-root .life-v2-goal .life-v2-track { margin-top: auto; }
+.games-root .life-v2-actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 10px; }
+.games-root .life-v2-action { display: flex; flex-direction: column; justify-content: center; gap: 7px; height: 82px; min-width: 0; padding: 12px 14px; border: 1px solid var(--life-v2-line); border-radius: 16px; background: var(--life-v2-surface); box-shadow: 0 2px 4px rgb(0 0 0 / 5%); text-align: left; }
+.games-root .life-v2-action > span { display: flex; align-items: center; gap: 9px; min-width: 0; }
+.games-root .life-v2-action strong { overflow: hidden; font-size: 15px; line-height: 19px; font-weight: 600; text-overflow: ellipsis; white-space: nowrap; }
+.games-root .life-v2-action small { overflow: hidden; color: var(--life-v2-muted); font-size: 12px; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.games-root .life-v2-icon { width: 24px; height: 24px; flex: none; }
+.games-root .life-v2-segments { display: flex; gap: 3px; min-height: 40px; padding: 3px; border-radius: 12px; background: var(--life-v2-soft); }
+.games-root .life-v2-segments button { min-width: 0; flex: 1; border: 0; border-radius: 9px; background: transparent; color: var(--life-v2-muted); font-size: 13px; line-height: 17px; font-weight: 600; }
+.games-root .life-v2-segments button[aria-selected='true'] { background: var(--life-v2-surface); color: var(--life-v2-text); box-shadow: 0 1px 3px rgb(0 0 0 / 5%); }
+.games-root .life-v2-summary { position: relative; min-height: 104px; display: flex; flex-direction: column; align-items: flex-start; gap: 6px; padding: 14px; border: 1px solid var(--life-v2-line); border-radius: 16px; background: var(--life-v2-surface); box-shadow: var(--life-v2-shadow); }
+.games-root .life-v2-summary .life-v2-track { margin-top: auto; }
+.games-root .life-v2-summary--accent { border-color: var(--life-v2-blue); background: var(--life-v2-blue-soft); }
+.games-root .life-v2-summary--balance { min-height: 76px; }
+.games-root .life-v2-summary--balance .life-v2-icon { position: absolute; top: 24px; right: 18px; width: 28px; height: 28px; }
+.games-root .life-v2-section { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 24px; }
+.games-root .life-v2-section h2 { font-size: 20px; line-height: 24px; font-weight: 600; letter-spacing: -.2px; }
+.games-root .life-v2-section > span { color: var(--life-v2-muted); font-size: 12px; line-height: 16px; white-space: nowrap; }
+.games-root .life-v2-row, .games-root .life-v2-shop-row, .games-root .life-v2-person { min-height: 92px; display: flex; align-items: center; gap: 12px; padding: 14px; border: 1px solid var(--life-v2-line); border-radius: 16px; background: var(--life-v2-surface); box-shadow: var(--life-v2-shadow); }
+.games-root .life-v2-row > div, .games-root .life-v2-shop-row > div, .games-root .life-v2-person > div { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 2px; }
+.games-root .life-v2-row strong, .games-root .life-v2-shop-row strong, .games-root .life-v2-person strong { overflow: hidden; font-size: 15px; line-height: 19px; text-overflow: ellipsis; white-space: nowrap; }
+.games-root .life-v2-row small, .games-root .life-v2-shop-row small, .games-root .life-v2-person small { overflow: hidden; color: var(--life-v2-muted); font-size: 12px; line-height: 16px; text-overflow: ellipsis; white-space: nowrap; }
+.games-root .life-v2-row b, .games-root .life-v2-shop-row b { color: var(--life-v2-blue-text); font-size: 13px; line-height: 17px; font-weight: 600; }
+.games-root .life-v2-row > button, .games-root .life-v2-shop-row > button { flex: none; min-height: 31px; padding: 5px 10px; border: 0; border-radius: 12px; background: var(--life-v2-blue-soft); color: var(--life-v2-blue-text); font-size: 13px; font-weight: 600; }
+.games-root .life-v2-row > button:disabled, .games-root .life-v2-shop-row > button:disabled { background: var(--life-v2-soft); color: var(--life-v2-muted); opacity: 1; }
+.games-root .life-v2-game-row { align-items: flex-start; }
+.games-root .life-v2-game-row > div { gap: 5px; }
+.games-root .life-v2-game-row strong { white-space: normal; }
+.games-root .life-v2-game-row p { color: var(--life-v2-muted); font-size: 13px; line-height: 18px; }
+.games-root .life-v2-game-row small { white-space: normal; }
+.games-root .life-v2-game-row > button { min-height: 40px; margin-top: 1px; }
+.games-root .life-v2-requirement { color: var(--life-v2-muted); }
+.games-root .life-v2-next-room { width: 100%; height: 150px; border-radius: 16px; object-fit: cover; }
+.games-root .life-v2-activity { display: flex; flex-direction: column; gap: 5px; padding: 14px; border: 1px solid var(--life-v2-blue); border-radius: 16px; background: var(--life-v2-blue-soft); }
+.games-root .life-v2-activity > span { color: var(--life-v2-blue-text); font-size: 11px; font-weight: 600; }
+.games-root .life-v2-activity strong { font-size: 15px; }
+.games-root .life-v2-activity small { color: var(--life-v2-muted); font-size: 12px; }
+.games-root .life-v2-activity .life-v2-track { margin-top: 4px; }
+.games-root .life-v2-journal { padding: 4px 14px; border: 1px solid var(--life-v2-line); border-radius: 16px; background: var(--life-v2-surface); }
+.games-root .life-v2-journal > div { padding-block: 12px; }
+.games-root .life-v2-journal > div + div { border-top: 1px solid var(--life-v2-line); }
+.games-root .life-v2-journal strong { font-size: 14px; }
+.games-root .life-v2-journal p { margin-top: 4px; color: var(--life-v2-muted); font-size: 12px; line-height: 17px; }
+.games-root .life-v2-notice { flex: none; width: calc(100% - 32px); max-height: 112px; overflow-y: auto; margin: 8px 16px; padding: 12px 14px; border: 1px solid var(--life-v2-blue); border-radius: 12px; background: var(--life-v2-blue-soft); color: var(--life-v2-text); font-size: 13px; line-height: 18px; text-align: left; }
+.games-root dialog.life-story-modal { position: fixed; inset: 0; width: min(520px, calc(100% - 28px)); margin: auto; max-height: calc(100dvh - 36px); overflow-y: auto; overscroll-behavior: contain; background: var(--life-v2-surface); color: var(--life-v2-text); }
+.games-root .life-story-modal::backdrop { background: rgb(0 0 0 / .46); }
+.games-root .life-story-modal > .life-event-art { display: block; margin: -20px -20px 14px; }
+.games-root .life-story-modal .life-event-error { color: #dc4455; }
+.games-root .life-v2-secondary, .games-root .life-v2-primary { min-height: 48px; width: 100%; padding: 10px 16px; border: 1px solid var(--life-v2-line); border-radius: 12px; background: var(--life-v2-soft); color: var(--life-v2-text); font-size: 15px; line-height: 19px; font-weight: 600; }
+.games-root .life-v2-primary { border-color: var(--life-v2-blue); background: var(--life-v2-blue); color: #fff; }
+.games-root .life-v2-path { padding: 14px; border: 1px solid var(--life-v2-line); border-radius: 16px; background: var(--life-v2-surface); box-shadow: var(--life-v2-shadow); }
+.games-root .life-v2-path > div { display: flex; align-items: center; gap: 12px; min-height: 58px; }
+.games-root .life-v2-path > div + div { border-top: 1px solid var(--life-v2-line); }
+.games-root .life-v2-path > div > span { width: 32px; height: 32px; display: grid; place-items: center; flex: none; border-radius: 50%; background: var(--life-v2-soft); color: var(--life-v2-muted); font-size: 13px; font-weight: 600; }
+.games-root .life-v2-path > div > span[data-done='true'] { background: #34c759; color: #fff; }
+.games-root .life-v2-path > div > div { display: flex; flex-direction: column; }
+.games-root .life-v2-path strong { font-size: 15px; line-height: 19px; }
+.games-root .life-v2-path small { color: var(--life-v2-muted); font-size: 12px; line-height: 16px; }
+.games-root .life-v2-facts { padding: 14px; border: 1px solid var(--life-v2-line); border-radius: 16px; background: var(--life-v2-surface); box-shadow: var(--life-v2-shadow); }
+.games-root .life-v2-facts > div { display: flex; justify-content: space-between; gap: 10px; padding: 4px 0; font-size: 15px; line-height: 20px; }
+.games-root .life-v2-facts span { color: var(--life-v2-muted); }
+.games-root .life-v2-facts strong { flex: none; white-space: nowrap; }
+.games-root .life-v2-homes { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 3px; scroll-snap-type: x proximity; }
+.games-root .life-v2-homes button { width: 142px; flex: none; overflow: hidden; padding: 0 0 10px; border: 1px solid var(--life-v2-line); border-radius: 14px; background: var(--life-v2-surface); color: var(--life-v2-text); text-align: left; scroll-snap-align: start; }
+.games-root .life-v2-homes button[aria-pressed='true'] { border-color: var(--life-v2-blue); }
+.games-root .life-v2-homes button:disabled { opacity: 1; }
+.games-root .life-v2-homes img { display: block; width: 100%; height: 77px; object-fit: cover; }
+.games-root .life-v2-homes span, .games-root .life-v2-homes small { display: block; overflow: hidden; padding-inline: 9px; text-overflow: ellipsis; white-space: nowrap; }
+.games-root .life-v2-homes span { margin-top: 7px; font-size: 12px; font-weight: 600; }
+.games-root .life-v2-homes small { margin-top: 2px; color: var(--life-v2-blue-text); font-size: 11px; }
+.games-root .life-v2-person > span, .games-root .life-v2-shop-row > span { width: 48px; height: 48px; display: grid; place-items: center; flex: none; border-radius: 13px; background: var(--life-v2-blue-soft); color: var(--life-v2-blue-text); font-size: 19px; font-weight: 600; }
+.games-root .life-v2-shop-row > span { width: 58px; height: 58px; background: var(--life-v2-soft); }
+.games-root .life-v2-shop-row > .life-v2-skin { height: 94px; overflow: hidden; }
+.games-root .life-v2-skin img { width: 100%; height: 100%; object-fit: contain; }
+.games-root .life-v2-shop-row > div small { white-space: normal; }
+.games-root .life-v2-shop-row > button { min-height: 40px; }
+.games-root .life-v2-person > div .life-v2-track { max-width: 170px; margin-top: 2px; }
+.games-root .life-v2-person > div .life-v2-track i { background: #af52de; }
+.games-root .life-v2-person > b { font-size: 15px; }
+.games-root .life-v2-note { min-height: 96px; padding: 14px; border: 1px solid var(--life-v2-line); border-radius: 16px; background: var(--life-v2-soft); }
+.games-root .life-v2-note strong { font-size: 15px; }
+.games-root .life-v2-note p { margin-top: 6px; color: var(--life-v2-muted); font-size: 13px; line-height: 18px; }
+.games-root .life-v2-note > button { min-height: 40px; margin-top: 10px; padding: 7px 12px; border: 0; border-radius: 10px; background: var(--life-v2-blue-soft); color: var(--life-v2-blue-text); font-size: 13px; font-weight: 600; }
+.games-root .life-v2-primary:disabled, .games-root .life-v2-action:disabled { opacity: .5; cursor: default; }
+.games-root .life-v2-profile { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 6px 14px; padding: 14px; border: 1px solid var(--life-v2-blue); border-radius: 16px; background: var(--life-v2-blue-soft); box-shadow: var(--life-v2-shadow); }
+.games-root .life-v2-avatar { position: relative; width: 82px; height: 82px; overflow: hidden; border-radius: 50%; background: #dcecff; }
+.games-root .life-v2-avatar img { position: absolute; top: -14px; left: 50%; display: block; width: 215px; max-width: none; height: auto; transform: translateX(-50%); }
+.games-root .life-v2-profile > div:nth-child(2) { min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 2px; }
+.games-root .life-v2-profile h2 { font-size: 24px; line-height: 29px; }
+.games-root .life-v2-profile p { overflow: hidden; color: var(--life-v2-muted); font-size: 15px; text-overflow: ellipsis; white-space: nowrap; }
+.games-root .life-v2-profile span { color: var(--life-v2-blue-text); font-size: 13px; font-weight: 600; }
+.games-root .life-v2-profile .life-v2-track, .games-root .life-v2-profile > small { grid-column: 1 / -1; }
+.games-root .life-v2-profile > small { color: var(--life-v2-muted); font-size: 12px; }
+.games-root .life-v2-skill-card { padding: 14px; border: 1px solid var(--life-v2-line); border-radius: 16px; background: var(--life-v2-surface); box-shadow: var(--life-v2-shadow); }
+.games-root .life-v2-skill-card > div { display: grid; grid-template-columns: 1fr auto; gap: 4px; padding: 5px 0; }
+.games-root .life-v2-skill-card span { color: var(--life-v2-muted); font-size: 15px; }
+.games-root .life-v2-skill-card strong { font-size: 15px; }
+.games-root .life-v2-skill-card .life-v2-track { grid-column: 1 / -1; }
+.games-root .life-v2-skill-card > div:nth-child(2) .life-v2-track i { background: #af52de; }
+.games-root .life-v2-skill-card > div:nth-child(3) .life-v2-track i { background: #ffcc00; }
+.games-root .life-v2-skill-card > div:nth-child(4) .life-v2-track i { background: #34c759; }
+.games-root .life-v2-skill-card > div:nth-child(5) .life-v2-track i { background: #ff9500; }
+.games-root .life-v2-nav { display: flex; align-items: center; justify-content: space-around; flex: none; min-height: calc(64px + env(safe-area-inset-bottom)); padding: 4px 24px max(4px, env(safe-area-inset-bottom)); border-top: 1px solid var(--life-v2-line); background: var(--life-v2-surface); }
+.games-root .life-v2-nav button { width: 100px; height: 56px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; border: 0; background: none; color: var(--life-v2-muted); font-size: 12px; line-height: 16px; }
+.games-root .life-v2-nav button[aria-current='page'] { color: var(--life-v2-blue-text); }
+.games-root .life-v2-nav img { width: 24px; height: 24px; opacity: .6; }
+.games-root .life-v2-nav button[aria-current='page'] img { opacity: 1; }
+[data-theme='dark'] .games-root .life-v2-nav img, .games-root[data-theme='dark'] .life-v2-nav img { filter: brightness(1.6); }
+.games-root .life-panel { border-color: var(--life-v2-line); background: var(--life-v2-bg); }
+.games-root .life-panel-head { border-color: var(--life-v2-line); background: var(--life-v2-surface); }
+.games-root .life-panel-head button { background: var(--life-v2-soft); color: var(--life-v2-text); }
+.games-root .life-panel-body .life-card, .games-root .life-panel-body .life-business-start { border-color: var(--life-v2-line); border-radius: 16px; background: var(--life-v2-surface); box-shadow: var(--life-v2-shadow); }
+.games-root .life-panel-body .life-kicker { background: var(--life-v2-blue-soft); color: var(--life-v2-blue-text); }
+.games-root .life-panel-body .life-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.games-root .life-panel-body .life-facts strong { overflow: visible; white-space: normal; overflow-wrap: anywhere; }
+@media (max-width: 360px) {
+  .games-root .life-header > .life-v2-balance { max-width: none; overflow: visible; font-size: 13px; }
+  .games-root .life-v2-page { padding-inline: 16px; }
+  .games-root .life-v2-home { padding-inline: 16px; }
+  .games-root .life-v2-action { padding-inline: 10px; }
+  .games-root .life-v2-need { padding-inline: 3px; }
+  .games-root .life-v2-need span { font-size: 10px; letter-spacing: -.3px; }
+}
+@media (min-width: 760px) {
+  .games-root .life-v2-page { width: min(100%, 670px); margin-inline: auto; padding-inline: 32px; }
+  .games-root .life-v2-home { width: min(100%, 670px); padding-inline: 32px; }
+  .games-root .life-v2-room { height: 300px; }
+  .games-root .life-v2-home .life-v2-room { height: 320px; }
+  .games-root .life-v2-need { height: 70px; }
+}

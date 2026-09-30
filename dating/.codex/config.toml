@@ -1,0 +1,3 @@
+[mcp_servers.dating_code]
+command = "uvx"
+args = ["--from", "jcodemunch-mcp==1.108.319", "jcodemunch-mcp", "serve"]

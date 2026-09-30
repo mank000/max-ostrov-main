@@ -1,0 +1,22 @@
+{
+  "name": "kutezh-dating-frontend",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 5174",
+    "build": "tsc -b && vite build",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "^6.0.0",
+    "vite": "^8.3.0",
+    "typescript": "^5.9.0",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@maxhub/max-ui": "0.5.0"
+  },
+  "devDependencies": {}
+}

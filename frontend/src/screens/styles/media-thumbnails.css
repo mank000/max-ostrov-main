@@ -1,0 +1,26 @@
+.extra-photos button {
+  position: relative;
+}
+.extra-photos video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  background: #050608;
+  pointer-events: none;
+}
+.extra-photos__video {
+  position: absolute;
+  left: 7px;
+  bottom: 7px;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 0.64);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+  pointer-events: none;
+}
+

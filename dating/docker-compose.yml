@@ -1,0 +1,31 @@
+services:
+  api:
+    image: golang:1.27-alpine
+    working_dir: /app
+    command: go run ./cmd/server
+    env_file: .env
+    environment:
+      DATING_ADDR: 0.0.0.0:8088
+      DATING_DATA: /data/dating.json
+      FRONTEND_DIR: /frontend/dist
+    volumes:
+      - ./backend:/app
+      - ./frontend/dist:/frontend/dist:ro
+      - dating_data:/data
+    ports:
+      - "8088:8088"
+  web:
+    image: node:22-alpine
+    working_dir: /app
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
+    environment:
+      VITE_API_URL: ${VITE_API_URL:-http://localhost:8088}
+      VITE_KUTEZH_APP_URL: ${VITE_KUTEZH_APP_URL:-}
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "5174:5174"
+    depends_on:
+      - api
+volumes:
+  dating_data:

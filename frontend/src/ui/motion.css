@@ -1,0 +1,309 @@
+:root {
+  --motion-press: 96ms;
+  --motion-fast: 160ms;
+  --motion-base: 200ms;
+  --motion-sheet: 240ms;
+  --motion-ease-out: cubic-bezier(0.22, 0.8, 0.2, 1);
+  --motion-spring: cubic-bezier(0.2, 0.9, 0.2, 1.08);
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+  transition:
+    opacity var(--motion-press) var(--motion-ease-out),
+    background-color var(--motion-fast) var(--motion-ease-out),
+    color var(--motion-fast) var(--motion-ease-out);
+}
+
+button:active:not(:disabled) {
+  opacity: 0.84;
+}
+
+.icon-button,
+.ui-button,
+.bottom-navigation__item,
+.tabs__item,
+.chip,
+.cell,
+.event-card,
+.event-row,
+.person-row,
+.feed-city,
+.compose-prompt,
+.friend-requests,
+.profile-showcase__stats > button,
+.photo-grid button,
+.post-card__actions > button,
+.post-card__event,
+.post-card__caption,
+.share-sheet__quick button,
+.share-sheet__friend,
+.friend-action-sheet__actions > button,
+.profile-info-sheet__action .ui-button,
+.notification-row,
+.gift-picker-card,
+.gift-history-card__sender {
+  -webkit-tap-highlight-color: transparent;
+  transform-origin: center;
+  transition:
+    transform var(--motion-press) var(--motion-ease-out),
+    opacity var(--motion-fast) var(--motion-ease-out),
+    background-color var(--motion-fast) var(--motion-ease-out),
+    color var(--motion-fast) var(--motion-ease-out);
+}
+
+.icon-button:active:not(:disabled),
+.bottom-navigation__item:active:not(:disabled),
+.tabs__item:active:not(:disabled),
+.post-card__actions > button:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+.ui-button:active:not(:disabled),
+.chip:active:not(:disabled),
+.photo-grid button:active:not(:disabled),
+.share-sheet__quick button:active:not(:disabled),
+.profile-info-sheet__action .ui-button:active:not(:disabled) {
+  transform: scale(0.965);
+}
+
+.cell:active:not(:disabled),
+.event-card:active:not(:disabled),
+.event-row:active:not(:disabled),
+.person-row:active:not(:disabled),
+.feed-city:active:not(:disabled),
+.compose-prompt:active:not(:disabled),
+.friend-requests:active:not(:disabled),
+.post-card__event:active:not(:disabled),
+.post-card__caption:active:not(:disabled),
+.share-sheet__friend:active:not(:disabled),
+.friend-action-sheet__actions > button:active:not(:disabled),
+.notification-row:active,
+.gift-picker-card:active:not(:disabled),
+.gift-history-card__sender:active:not(:disabled) {
+  transform: scale(0.988);
+}
+
+.bottom-navigation__item.is-active .bottom-navigation__icon {
+  animation: motion-nav-pop var(--motion-base) var(--motion-spring) both;
+}
+
+.tabs__item.is-active::after {
+  animation: motion-tab-indicator var(--motion-base) var(--motion-spring) both;
+  transform-origin: center;
+}
+
+.post-card__actions > button.is-active .ui-icon {
+  animation: motion-reaction-pop 240ms var(--motion-spring) both;
+}
+
+.count-badge,
+.notification-row__dot {
+  animation: motion-badge-in var(--motion-base) var(--motion-spring) both;
+}
+
+.avatar img {
+  transition:
+    transform var(--motion-base) var(--motion-ease-out),
+    opacity var(--motion-fast) var(--motion-ease-out);
+}
+
+.person-row:active .avatar img,
+.friend-requests:active .avatar img,
+.share-sheet__friend:active .avatar img {
+  transform: scale(1.035);
+}
+
+.share-sheet-backdrop,
+.friend-action-backdrop,
+.profile-info-backdrop,
+.comment-report-backdrop,
+.gift-detail-backdrop {
+  animation: motion-backdrop-in var(--motion-fast) ease-out both;
+}
+
+.share-sheet,
+.friend-action-sheet,
+.profile-info-sheet,
+.comment-report-sheet,
+.gift-detail-sheet {
+  animation: motion-sheet-in var(--motion-sheet) var(--motion-spring) both;
+  transform-origin: bottom center;
+}
+
+.app-toast {
+  animation: motion-toast-in var(--motion-base) var(--motion-ease-out) both;
+}
+
+.map-search-results {
+  animation: motion-popover-in var(--motion-fast) var(--motion-ease-out) both;
+}
+
+.gift-picker-card.is-selected .gift-picker-card__art svg,
+.gift-picker-card.is-selected .gift-picker-card__art img {
+  animation: motion-gift-select 280ms var(--motion-spring) both;
+}
+
+.achievement-card__progress > span {
+  transition: width 360ms var(--motion-ease-out);
+}
+
+.state-panel--loading div {
+  animation: motion-loading-pulse 820ms ease-in-out infinite alternate;
+}
+
+@keyframes motion-nav-pop {
+  0% {
+    transform: scale(0.78);
+    opacity: 0.72;
+  }
+  68% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes motion-tab-indicator {
+  from {
+    transform: scaleX(0.45);
+    opacity: 0.55;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes motion-reaction-pop {
+  0% {
+    transform: scale(0.72) rotate(-7deg);
+  }
+  58% {
+    transform: scale(1.18) rotate(3deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes motion-badge-in {
+  from {
+    transform: scale(0.65);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes motion-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes motion-sheet-in {
+  0% {
+    transform: translate3d(0, 14px, 0) scale(0.992);
+    opacity: 0.82;
+  }
+  72% {
+    transform: translate3d(0, -1px, 0) scale(1.002);
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes motion-loading-pulse {
+  from {
+    opacity: 0.52;
+  }
+  to {
+    opacity: 0.92;
+  }
+}
+
+@keyframes motion-toast-in {
+  from {
+    transform: translate3d(0, 8px, 0);
+    opacity: 0;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes motion-popover-in {
+  from {
+    transform: translate3d(0, -5px, 0);
+    opacity: 0.55;
+  }
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes motion-gift-select {
+  0% {
+    transform: scale(0.92) rotate(-3deg);
+  }
+  70% {
+    transform: scale(1.06) rotate(1deg);
+  }
+  100% {
+    transform: scale(1) rotate(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .icon-button:active:not(:disabled),
+  .bottom-navigation__item:active:not(:disabled),
+  .tabs__item:active:not(:disabled),
+  .post-card__actions > button:active:not(:disabled),
+  .ui-button:active:not(:disabled),
+  .chip:active:not(:disabled),
+  .photo-grid button:active:not(:disabled),
+  .cell:active:not(:disabled),
+  .event-card:active:not(:disabled),
+  .event-row:active:not(:disabled),
+  .person-row:active:not(:disabled),
+  .feed-city:active:not(:disabled),
+  .compose-prompt:active:not(:disabled),
+  .friend-requests:active:not(:disabled),
+  .post-card__event:active:not(:disabled),
+  .post-card__caption:active:not(:disabled),
+  .share-sheet__quick button:active:not(:disabled),
+  .share-sheet__friend:active:not(:disabled),
+  .friend-action-sheet__actions > button:active:not(:disabled),
+  .notification-row:active,
+  .gift-picker-card:active:not(:disabled),
+  .gift-history-card__sender:active:not(:disabled) {
+    transform: none !important;
+  }
+
+  .state-panel--loading div {
+    animation: none !important;
+  }
+}

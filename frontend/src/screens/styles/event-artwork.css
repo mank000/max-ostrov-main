@@ -1,0 +1,204 @@
+.event-artwork-editor {
+  margin: 9px 0 2px;
+}
+.event-artwork-editor__head {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-bottom: 10px;
+}
+.event-artwork-editor__head strong {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 650;
+}
+.event-artwork-editor__head span,
+.event-artwork-editor__hint {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 17px;
+}
+.event-artwork-editor__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 102px;
+  gap: 10px;
+  align-items: stretch;
+}
+.event-artwork-slot-wrap {
+  position: relative;
+  min-width: 0;
+}
+.event-artwork-slot {
+  width: 100%;
+  height: 100%;
+  border: 1px dashed var(--divider);
+  border-radius: 15px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  background: var(--secondary);
+  color: var(--accent-text);
+  cursor: pointer;
+}
+.event-artwork-slot--header {
+  aspect-ratio: 16 / 9;
+  min-height: 96px;
+}
+.event-artwork-slot--icon {
+  aspect-ratio: 1;
+}
+.event-artwork-slot.has-image {
+  border-style: solid;
+}
+.event-artwork-slot > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.event-artwork-slot input {
+  display: none;
+}
+.event-artwork-slot--header > span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+.event-artwork-slot--header > span strong {
+  color: var(--text);
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 590;
+}
+.event-artwork-slot small {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 14px;
+}
+.event-artwork-slot--icon:not(.has-image) {
+  grid-template-rows: 1fr auto;
+  gap: 3px;
+  padding: 9px 7px 7px;
+}
+.event-artwork-slot__category {
+  width: 52px;
+  height: 52px;
+  border-radius: 13px;
+}
+.event-artwork-slot__remove {
+  position: absolute;
+  z-index: 3;
+  right: 6px;
+  top: 6px;
+  width: 27px;
+  height: 27px;
+  border: 2px solid var(--primary);
+  border-radius: 50%;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: var(--danger);
+  color: #fff;
+}
+.event-artwork-slot__remove .ui-icon {
+  background: currentColor;
+}
+.event-artwork-editor__hint {
+  margin: 9px 1px 0;
+}
+.event-edit-artwork {
+  margin: 2px 0 20px;
+  padding-bottom: 4px;
+}
+.event-edit-artwork__row {
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+  margin-top: 10px;
+}
+.event-edit-artwork__preview {
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--secondary);
+  color: var(--muted);
+  box-shadow: 0 0 0 1px var(--divider) inset;
+}
+.event-edit-artwork__preview--header {
+  width: 118px;
+  aspect-ratio: 16 / 9;
+}
+.event-edit-artwork__preview--icon {
+  width: 72px;
+  height: 72px;
+  justify-self: center;
+}
+.event-edit-artwork__preview > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.event-edit-artwork__preview > span:not(.event-category-artwork) {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  line-height: 14px;
+}
+.event-edit-artwork__category {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+}
+.event-edit-artwork__actions {
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.event-edit-artwork__actions label,
+.event-edit-artwork__actions button {
+  min-height: 34px;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--secondary);
+  color: var(--accent-text);
+  font: inherit;
+  font-size: 11px;
+  line-height: 15px;
+  font-weight: 510;
+  cursor: pointer;
+}
+.event-edit-artwork__actions label input {
+  display: none;
+}
+.event-edit-artwork__actions .ui-icon {
+  flex: none;
+  background: currentColor;
+}
+.event-edit-artwork__actions .is-destructive {
+  color: var(--danger);
+}
+.event-edit-artwork__actions button:disabled,
+.event-edit-artwork__actions label:has(input:disabled) {
+  opacity: 0.5;
+  cursor: default;
+}
+@media (max-width: 370px) {
+  .event-edit-artwork__row {
+    grid-template-columns: 96px minmax(0, 1fr);
+    gap: 9px;
+  }
+  .event-edit-artwork__preview--header {
+    width: 96px;
+  }
+}

@@ -1,0 +1,54 @@
+.sheet-drag-handle {
+  flex: none;
+  width: 64px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  align-self: center;
+  margin: 0 auto;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  touch-action: none;
+  cursor: grab;
+}
+.sheet-drag-handle::after {
+  content: '';
+  width: 38px;
+  height: 5px;
+  border-radius: 999px;
+  background: var(--divider);
+  transition:
+    width 180ms ease,
+    background-color 180ms ease;
+}
+.sheet-drag-handle:active {
+  cursor: grabbing;
+  opacity: 1;
+}
+.sheet-drag-handle:active::after,
+.sheet-drag-handle:focus-visible::after {
+  width: 45px;
+  background: var(--muted);
+}
+[data-sheet-expanded='true'] {
+  max-height: calc(var(--app-viewport-height, 100dvh) - 16px) !important;
+}
+.sheet-backdrop-dismiss {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: default;
+}
+.share-sheet,
+.profile-info-sheet,
+.comment-report-sheet,
+.gift-detail-sheet {
+  position: relative;
+  z-index: 1;
+}

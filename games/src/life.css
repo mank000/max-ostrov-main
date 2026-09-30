@@ -1,0 +1,1245 @@
+
+.games-root .life-shell {
+  max-width: 720px;
+  background: var(--secondary);
+}
+
+.games-root .life-screen {
+  position: relative;
+  min-height: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: var(--secondary);
+  color: var(--text);
+}
+
+.games-root .life-header {
+  flex: none;
+  min-height: 68px;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px 7px 8px;
+  border-bottom: 1px solid var(--divider);
+  background: var(--primary);
+}
+
+.games-root .life-header > div {
+  min-width: 0;
+}
+
+.games-root .life-header h1 {
+  font-size: 21px;
+  line-height: 25px;
+  font-weight: 670;
+  letter-spacing: -.25px;
+}
+
+.games-root .life-header span {
+  display: block;
+  margin-top: 1px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.games-root .life-header > strong {
+  color: var(--text);
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.games-root .life-back {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 12px;
+  background: none;
+  color: var(--accent-text);
+  font-size: 34px;
+  line-height: 1;
+}
+
+.games-root .life-back:active {
+  background: var(--secondary);
+}
+
+.games-root .life-scroll {
+  min-height: 0;
+  flex: 1;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding: 12px 12px 26px;
+}
+
+.games-root .life-scroll > * + * {
+  margin-top: 10px;
+}
+
+.games-root .life-card,
+.games-root .life-hero,
+.games-root .life-active,
+.games-root .life-business-start {
+  border: 1px solid var(--divider);
+  border-radius: 18px;
+  background: var(--primary);
+}
+
+.games-root .life-card {
+  padding: 16px;
+}
+
+.games-root .life-hero {
+  padding: 19px 18px;
+}
+
+.games-root .life-hero h2,
+.games-root .life-business-start h2 {
+  max-width: 560px;
+  margin-top: 6px;
+  font-size: 21px;
+  line-height: 26px;
+  font-weight: 690;
+  letter-spacing: -.25px;
+}
+
+.games-root .life-hero p,
+.games-root .life-business-start > p {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.games-root .life-hero p strong {
+  color: var(--text);
+  font-weight: 620;
+}
+
+.games-root .life-kicker {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  font-size: 11px;
+  line-height: 16px;
+  font-weight: 650;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+}
+
+.games-root .life-section-title {
+  display: flex;
+  min-height: 28px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.games-root .life-section-title h2 {
+  font-size: 17px;
+  line-height: 22px;
+  font-weight: 660;
+  letter-spacing: -.1px;
+}
+
+.games-root .life-section-title > span {
+  overflow: hidden;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.games-root .life-section-note {
+  margin: -4px 0 12px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.games-root .life-active {
+  padding: 15px 16px 16px;
+  border-color: color-mix(in srgb, var(--accent) 28%, var(--divider));
+}
+
+.games-root .life-active__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--accent-text);
+  font-size: 12px;
+  line-height: 18px;
+  font-weight: 630;
+}
+
+.games-root .life-active h2 {
+  margin-top: 6px;
+  font-size: 18px;
+  line-height: 23px;
+}
+
+.games-root .life-active p {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.games-root .life-progress {
+  height: 5px;
+  margin-top: 12px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--secondary);
+}
+
+.games-root .life-progress i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+  transition: width .35s linear;
+}
+
+.games-root .life-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 16px;
+}
+
+.games-root .life-stat__line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.games-root .life-stat__line span {
+  color: var(--muted);
+}
+
+.games-root .life-stat__line strong {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.games-root .life-meter,
+.games-root .life-skill-track {
+  height: 5px;
+  margin-top: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--secondary);
+}
+
+.games-root .life-meter i,
+.games-root .life-skill-track i {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--accent);
+}
+
+.games-root .life-meter[data-tone='warning'] i {
+  background: #d68b16;
+}
+
+.games-root .life-meter[data-tone='danger'] i {
+  background: #e24c5b;
+}
+
+.games-root .life-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--divider);
+  border-left: 1px solid var(--divider);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.games-root .life-facts > div {
+  min-width: 0;
+  min-height: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  padding: 10px 12px;
+  border-right: 1px solid var(--divider);
+  border-bottom: 1px solid var(--divider);
+  background: var(--primary);
+}
+
+.games-root .life-facts span {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.games-root .life-facts strong {
+  overflow: hidden;
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 640;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.games-root .life-skill-list {
+  display: grid;
+  gap: 12px;
+}
+
+.games-root .life-skill-list > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0 10px;
+}
+
+.games-root .life-skill-list span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.games-root .life-skill-list strong {
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.games-root .life-skill-track {
+  grid-column: 1 / -1;
+}
+
+.games-root .life-next-list {
+  margin-inline: -4px;
+}
+
+.games-root .life-next-list button {
+  width: 100%;
+  min-height: 60px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20px;
+  align-content: center;
+  gap: 1px 8px;
+  padding: 9px 8px;
+  border: 0;
+  border-bottom: 1px solid var(--divider);
+  background: none;
+  text-align: left;
+}
+
+.games-root .life-next-list button:last-child {
+  border-bottom: 0;
+}
+
+.games-root .life-next-list button:active {
+  transform: none;
+  opacity: .65;
+}
+
+.games-root .life-next-list span {
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 610;
+}
+
+.games-root .life-next-list small {
+  grid-column: 1;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.games-root .life-next-list b {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  color: var(--hint);
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.games-root .life-history {
+  padding-bottom: 6px;
+}
+
+.games-root .life-history-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 15px minmax(0, 1fr);
+  gap: 9px;
+  padding: 8px 0 13px;
+}
+
+.games-root .life-history-row:not(:last-child)::before {
+  content: '';
+  position: absolute;
+  left: 5px;
+  top: 19px;
+  bottom: -5px;
+  width: 1px;
+  background: var(--divider);
+}
+
+.games-root .life-history-row > i {
+  width: 11px;
+  height: 11px;
+  margin-top: 4px;
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.games-root .life-history-row strong {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 620;
+}
+
+.games-root .life-history-row p {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.games-root .life-option {
+  min-height: 86px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid var(--divider);
+}
+
+.games-root .life-option:first-of-type {
+  border-top: 0;
+}
+
+.games-root .life-option__copy {
+  min-width: 0;
+  flex: 1;
+}
+
+.games-root .life-option__copy > strong {
+  display: block;
+  font-size: 14px;
+  line-height: 19px;
+  font-weight: 640;
+}
+
+.games-root .life-option__copy p {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.games-root .life-option__copy small {
+  display: block;
+  margin-top: 6px;
+  color: var(--hint);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.games-root .life-option__action {
+  min-width: 98px;
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+  flex: none;
+}
+
+.games-root .life-option__action > b {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.games-root .life-small-button {
+  min-width: 88px;
+  min-height: 34px;
+  padding: 6px 11px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  color: var(--accent-text);
+  font-size: 12px;
+  line-height: 17px;
+  font-weight: 630;
+}
+
+.games-root .life-small-button:disabled,
+.games-root .life-primary:disabled,
+.games-root .life-wide-action:disabled,
+.games-root .life-strategies button:disabled,
+.games-root .life-hire button:disabled {
+  cursor: default;
+  opacity: .38;
+}
+
+.games-root .life-requirement {
+  display: inline-flex;
+  max-width: 100%;
+  margin-top: 7px;
+  padding: 4px 7px;
+  border-radius: 7px;
+  background: var(--secondary);
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.games-root .life-wide-action {
+  width: 100%;
+  min-height: 57px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-top: 10px;
+  padding: 9px 11px;
+  border: 0;
+  border-radius: 12px;
+  background: var(--secondary);
+  text-align: left;
+}
+
+.games-root .life-wide-action span {
+  min-width: 0;
+}
+
+.games-root .life-wide-action strong {
+  display: block;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 620;
+}
+
+.games-root .life-wide-action small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.games-root .life-wide-action > b {
+  color: var(--accent-text);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.games-root .life-purchase {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.games-root .life-purchase > div:first-child {
+  min-width: 0;
+  flex: 1;
+}
+
+.games-root .life-purchase > div:last-child {
+  display: grid;
+  justify-items: end;
+  gap: 8px;
+}
+
+.games-root .life-purchase strong {
+  font-size: 14px;
+}
+
+.games-root .life-purchase p {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 17px;
+}
+
+.games-root .life-purchase small {
+  display: block;
+  margin-top: 6px;
+  color: var(--hint);
+  font-size: 11px;
+}
+
+.games-root .life-purchase b {
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.games-root .life-complete {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.games-root .life-debt > strong {
+  display: block;
+  font-size: 26px;
+  line-height: 32px;
+  font-variant-numeric: tabular-nums;
+}
+
+.games-root .life-debt > p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.games-root .life-debt > button {
+  width: 100%;
+  min-height: 42px;
+  margin-top: 13px;
+  border: 0;
+  border-radius: 11px;
+  background: var(--secondary);
+  color: var(--accent-text);
+  font-size: 13px;
+  font-weight: 620;
+}
+
+.games-root .life-business-start {
+  padding: 20px 18px 18px;
+}
+
+.games-root .life-business-requirements {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  margin: 16px 0 12px;
+  overflow: hidden;
+  border: 1px solid var(--divider);
+  border-radius: 12px;
+  background: var(--divider);
+}
+
+.games-root .life-business-requirements > div {
+  min-width: 0;
+  padding: 10px;
+  background: var(--primary);
+}
+
+.games-root .life-business-requirements span {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.games-root .life-business-requirements strong {
+  display: block;
+  margin-top: 2px;
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.games-root .life-primary {
+  width: 100%;
+  min-height: 44px;
+  margin-top: 12px;
+  padding: 9px 14px;
+  border: 0;
+  border-radius: 11px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 630;
+}
+
+.games-root .life-company__title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.games-root .life-company__title > div {
+  min-width: 0;
+}
+
+.games-root .life-company__title span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.games-root .life-company__title h2 {
+  margin-top: 2px;
+  font-size: 19px;
+  line-height: 24px;
+}
+
+.games-root .life-company__title > strong {
+  color: var(--accent-text);
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.games-root .life-company > p {
+  margin: 8px 0 14px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.games-root .life-strategies {
+  display: grid;
+  gap: 7px;
+}
+
+.games-root .life-strategies button {
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 8px 11px;
+  border: 0;
+  border-radius: 11px;
+  background: var(--secondary);
+  text-align: left;
+}
+
+.games-root .life-strategies strong {
+  font-size: 13px;
+}
+
+.games-root .life-strategies span {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 16px;
+  text-align: right;
+}
+
+.games-root .life-invest {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 6px;
+}
+
+.games-root .life-invest button {
+  min-height: 40px;
+  padding: 6px 4px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--secondary);
+  color: var(--accent-text);
+  font-size: 11px;
+  font-weight: 630;
+}
+
+.games-root .life-invest button:disabled {
+  cursor: default;
+  opacity: .38;
+}
+
+.games-root .life-hire {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+}
+
+.games-root .life-hire button {
+  min-height: 40px;
+  padding: 6px 3px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--secondary);
+  color: var(--accent-text);
+  font-size: 12px;
+  font-weight: 630;
+}
+
+.games-root .life-expand h2 {
+  margin-top: 7px;
+  font-size: 19px;
+  line-height: 24px;
+}
+
+.games-root .life-expand > p {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.games-root .life-final {
+  padding: 16px;
+  border-radius: 13px;
+  background: var(--secondary);
+}
+
+.games-root .life-final strong {
+  font-size: 15px;
+  line-height: 20px;
+}
+
+.games-root .life-final p {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.games-root .life-ladder {
+  display: grid;
+}
+
+.games-root .life-ladder > div {
+  position: relative;
+  min-height: 54px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+}
+
+.games-root .life-ladder > div:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 42px;
+  bottom: -12px;
+  width: 1px;
+  background: var(--divider);
+}
+
+.games-root .life-ladder i {
+  width: 31px;
+  height: 31px;
+  display: grid;
+  place-items: center;
+  flex: none;
+  border: 1px solid var(--divider);
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--hint);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 650;
+  z-index: 1;
+}
+
+.games-root .life-ladder span {
+  min-width: 0;
+  display: grid;
+}
+
+.games-root .life-ladder strong {
+  overflow: hidden;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 610;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.games-root .life-ladder small {
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.games-root .life-ladder > div[data-state='done'] i {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.games-root .life-ladder > div[data-state='next'] i {
+  border-color: var(--accent);
+  color: var(--accent-text);
+}
+
+.games-root .life-ladder > div[data-state='locked'] {
+  opacity: .58;
+}
+
+.games-root .life-nav {
+  flex: none;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  padding: 4px 6px max(7px, env(safe-area-inset-bottom), var(--tg-safe-area-inset-bottom, 0px));
+  border-top: 1px solid var(--divider);
+  background: var(--primary);
+}
+
+.games-root .life-nav button {
+  min-width: 0;
+  min-height: 51px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 3px;
+  border: 0;
+  background: none;
+  color: var(--hint);
+  font-size: 10px;
+  line-height: 14px;
+}
+
+.games-root .life-nav button[aria-current='page'] {
+  color: var(--accent-text);
+}
+
+.games-root .life-nav i {
+  position: relative;
+  width: 22px;
+  height: 20px;
+  display: block;
+}
+
+.games-root .life-nav i::before,
+.games-root .life-nav i::after {
+  content: '';
+  position: absolute;
+  border: 1.7px solid currentColor;
+}
+
+.games-root .life-nav i[data-icon='today']::before {
+  inset: 4px 2px 1px;
+  border-radius: 5px;
+}
+
+.games-root .life-nav i[data-icon='today']::after {
+  width: 8px;
+  height: 5px;
+  left: 6px;
+  top: 0;
+  border-width: 0 0 1.7px;
+}
+
+.games-root .life-nav i[data-icon='work']::before {
+  inset: 5px 1px 1px;
+  border-radius: 4px;
+}
+
+.games-root .life-nav i[data-icon='work']::after {
+  width: 8px;
+  height: 5px;
+  left: 6px;
+  top: 1px;
+  border-radius: 3px 3px 0 0;
+  border-bottom: 0;
+}
+
+.games-root .life-nav i[data-icon='study']::before {
+  width: 17px;
+  height: 11px;
+  left: 2px;
+  top: 4px;
+  transform: rotate(0deg) skewY(-12deg);
+  border-radius: 2px;
+}
+
+.games-root .life-nav i[data-icon='study']::after {
+  width: 1px;
+  height: 8px;
+  right: 1px;
+  top: 6px;
+  border-width: 0 0 0 1.7px;
+}
+
+.games-root .life-nav i[data-icon='business']::before {
+  inset: 8px 2px 1px;
+  border-radius: 2px;
+}
+
+.games-root .life-nav i[data-icon='business']::after {
+  width: 8px;
+  height: 7px;
+  left: 6px;
+  top: 1px;
+  border-radius: 2px 2px 0 0;
+  border-bottom: 0;
+}
+
+.games-root .life-nav i[data-icon='self']::before {
+  width: 7px;
+  height: 7px;
+  left: 7px;
+  top: 1px;
+  border-radius: 50%;
+}
+
+.games-root .life-nav i[data-icon='self']::after {
+  width: 15px;
+  height: 8px;
+  left: 3px;
+  bottom: 0;
+  border-radius: 9px 9px 3px 3px;
+}
+
+.games-root .life-error {
+  flex: none;
+  width: calc(100% - 24px);
+  margin: 8px 12px 0;
+  padding: 9px 11px;
+  border: 1px solid color-mix(in srgb, #e24c5b 38%, var(--divider));
+  border-radius: 10px;
+  background: color-mix(in srgb, #e24c5b 8%, var(--primary));
+  color: #c83848;
+  font-size: 12px;
+  line-height: 17px;
+  text-align: left;
+}
+
+[data-theme='dark'] .games-root .life-error {
+  color: #ff8e9b;
+}
+
+.games-root .life-loading {
+  min-height: 0;
+  flex: 1;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 7px;
+  padding: 30px;
+  text-align: center;
+}
+
+.games-root .life-loading strong {
+  font-size: 17px;
+}
+
+.games-root .life-loading span,
+.games-root .life-loading p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.games-root .life-spinner {
+  width: 28px;
+  height: 28px;
+  margin-bottom: 6px;
+  border: 3px solid var(--divider);
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: life-spin .85s linear infinite;
+}
+
+@keyframes life-spin {
+  to { transform: rotate(360deg); }
+}
+
+.games-root .life-event-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 18px 14px max(18px, env(safe-area-inset-bottom));
+  background: rgb(0 0 0 / .46);
+}
+
+.games-root .life-event {
+  width: min(100%, 520px);
+  max-height: min(620px, calc(100dvh - 44px));
+  overflow-y: auto;
+  padding: 20px;
+  border: 0;
+  border-radius: 22px;
+  background: var(--primary);
+  color: var(--text);
+}
+
+.games-root .life-event__eyebrow {
+  display: inline-flex;
+  min-height: 23px;
+  align-items: center;
+  padding: 0 8px;
+  border-radius: 8px;
+  background: var(--secondary);
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 650;
+  text-transform: uppercase;
+}
+
+.games-root .life-event--good .life-event__eyebrow {
+  background: color-mix(in srgb, #25a97b 12%, var(--primary));
+  color: #218164;
+}
+
+.games-root .life-event--danger .life-event__eyebrow {
+  background: color-mix(in srgb, #e24c5b 11%, var(--primary));
+  color: #ca3c4b;
+}
+
+.games-root .life-event h2 {
+  margin-top: 10px;
+  font-size: 22px;
+  line-height: 27px;
+  font-weight: 690;
+}
+
+.games-root .life-event > p {
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 19px;
+}
+
+.games-root .life-event > div {
+  display: grid;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.games-root .life-event button {
+  width: 100%;
+  min-height: 60px;
+  display: grid;
+  gap: 2px;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 13px;
+  background: var(--secondary);
+  text-align: left;
+}
+
+.games-root .life-event button strong {
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 640;
+}
+
+.games-root .life-event button span {
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 16px;
+}
+
+.games-root .game-row__icon.life-tile {
+  background: #e7f2ff;
+  color: #0878dc;
+}
+
+[data-theme='dark'] .games-root .game-row__icon.life-tile {
+  background: #19334f;
+  color: #78b9ff;
+}
+
+@media (min-width: 700px) {
+  .games-root .life-scroll {
+    padding: 16px 18px 32px;
+  }
+
+  .games-root .life-card,
+  .games-root .life-hero,
+  .games-root .life-active,
+  .games-root .life-business-start {
+    border-radius: 20px;
+  }
+
+  .games-root .life-stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .games-root .life-facts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .games-root .life-business-requirements {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 430px) {
+  .games-root .life-header {
+    grid-template-columns: 42px minmax(0, 1fr) auto;
+    padding-right: 10px;
+  }
+
+  .games-root .life-header > strong {
+    font-size: 14px;
+  }
+
+  .games-root .life-option {
+    gap: 8px;
+  }
+
+  .games-root .life-option__action {
+    min-width: 82px;
+  }
+
+  .games-root .life-small-button {
+    min-width: 78px;
+    padding-inline: 8px;
+  }
+
+  .games-root .life-hire {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 360px) {
+  .games-root .life-header > strong {
+    max-width: 92px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .games-root .life-stats-grid,
+  .games-root .life-facts,
+  .games-root .life-business-requirements {
+    grid-template-columns: 1fr;
+  }
+
+  .games-root .life-option {
+    display: grid;
+  }
+
+  .games-root .life-option__action {
+    width: 100%;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    justify-items: start;
+  }
+
+  .games-root .life-option__action .life-small-button {
+    justify-self: end;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .games-root .life-spinner {
+    animation: none;
+  }
+
+  .games-root .life-progress i {
+    transition: none;
+  }
+}

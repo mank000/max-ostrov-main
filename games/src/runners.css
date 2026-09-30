@@ -1,0 +1,53 @@
+.games-root .flappy-toast,
+.games-root .runner-toast {
+  position: absolute;
+  z-index: 8;
+  left: 50%;
+  bottom: 14px;
+  width: max-content;
+  max-width: calc(100% - 30px);
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--primary) 92%, transparent);
+  box-shadow: 0 6px 24px rgb(0 0 0 / .14);
+  color: var(--accent-text);
+  font-size: 13px;
+  line-height: 17px;
+  text-align: center;
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  pointer-events: none;
+  transition: opacity .16s, transform .16s;
+}
+.games-root .flappy-toast.is-visible,
+.games-root .runner-toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+.games-root .flappy-notice { display: none; }
+
+.games-root .game-row__icon.dino-tile { background:#e8edf2; color:#223244; font-size:22px; transform:rotate(45deg); }
+.games-root .dino-runner { min-height:0; flex:1; display:flex; flex-direction:column; padding:12px 0 max(14px, env(safe-area-inset-bottom)); overflow:hidden; }
+.games-root .dino-top { flex:none; margin:0 14px 7px; }
+.games-root .dino-top h2 { min-width:0; flex:1; }
+.games-root .dino-pause { width:36px; height:36px; border:0; border-radius:0; background:transparent; color:var(--text); }
+.games-root .dino-hud { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:3px 12px; padding:0 18px 5px; color:var(--muted); font-size:11px; }
+.games-root .dino-hud span:nth-child(even) { text-align:right; }
+.games-root .dino-hud b { color:var(--text); font-size:13px; }
+.games-root .dino-subhud { min-height:20px; display:flex; justify-content:space-between; gap:8px; padding:0 18px 6px; color:var(--hint); font-size:10px; white-space:nowrap; overflow:hidden; }
+.games-root .dino-subhud span { overflow:hidden; text-overflow:ellipsis; }
+.games-root .dino-bossbar { height:7px; margin:0 18px 7px; overflow:hidden; border-radius:999px; background:var(--divider); }
+.games-root .dino-bossbar span { display:block; height:100%; border-radius:inherit; background:#8c4b93; transition:width .15s; }
+.games-root .dino-stage { position:relative; flex:1; min-height:300px; max-height:620px; overflow:hidden; border:0; border-radius:0; background:var(--accent-soft); }
+.games-root .dino-stage canvas { display:block; width:100%; height:100%; min-height:300px; touch-action:none; user-select:none; }
+.games-root .dino-overlay { position:absolute; z-index:5; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; padding:22px; border:0; background:color-mix(in srgb, var(--primary) 82%, transparent); color:var(--text); text-align:center; }
+.games-root .dino-overlay strong { font-size:22px; }
+.games-root .dino-overlay span { color:var(--muted); font-size:13px; }
+.games-root .dino-overlay--button { width:100%; cursor:pointer; }
+.games-root .dino-result .button { width:min(280px,100%); margin-top:9px; }
+.games-root .dino-result .button + .button { margin-top:0; }
+.games-root .dino-error { flex:none; min-height:17px; margin:4px 2px 0; color:#e34855; font-size:11px; text-align:center; }
+@media (max-height:700px) {
+  .games-root .dino-stage, .games-root .dino-stage canvas { min-height:250px; }
+}
+@media (min-width:600px) {
+  .games-root .dino-hud { grid-template-columns:repeat(4,minmax(0,1fr)); }
+  .games-root .dino-hud span:nth-child(even) { text-align:left; }
+}

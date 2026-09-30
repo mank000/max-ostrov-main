@@ -1,0 +1,214 @@
+.economy-screen {
+  padding: 14px 16px 28px;
+}
+.economy-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 22px 20px 18px;
+  border: 1px solid color-mix(in srgb, var(--accent) 24%, var(--divider));
+  border-radius: 22px;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--accent) 18%, var(--primary)),
+    color-mix(in srgb, var(--accent) 5%, var(--primary))
+  );
+}
+.economy-hero::after {
+  content: '';
+  position: absolute;
+  width: 158px;
+  height: 158px;
+  top: -74px;
+  right: -42px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  box-shadow:
+    0 0 0 24px color-mix(in srgb, var(--accent) 5%, transparent),
+    0 0 0 48px color-mix(in srgb, var(--accent) 4%, transparent);
+  pointer-events: none;
+}
+.economy-hero__balance {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+.economy-hero__coin {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 17px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--accent) 18%, var(--primary));
+  color: var(--accent-text);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, var(--primary) 70%, transparent);
+}
+.economy-hero__balance > span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.economy-hero__balance small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 17px;
+}
+.economy-hero__balance strong {
+  color: var(--text);
+  font-size: 30px;
+  line-height: 36px;
+  font-weight: 720;
+  letter-spacing: -0.7px;
+  font-variant-numeric: tabular-nums;
+}
+.economy-hero__balance em {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 21px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+.economy-hero p {
+  position: relative;
+  z-index: 1;
+  max-width: 370px;
+  margin: 16px 0 17px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 20px;
+}
+.economy-hero__links {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.economy-hero__links button {
+  min-height: 36px;
+  border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--divider));
+  border-radius: 11px;
+  padding: 5px 10px 5px 12px;
+  background: var(--primary);
+  color: var(--text);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 620;
+}
+.economy-hero__links button .ui-icon {
+  color: var(--accent-text);
+}
+.economy-store-link {
+  width: 100%;
+  margin: 12px 0 8px;
+  min-height: 70px;
+  border: 1px solid var(--divider);
+  border-radius: 16px;
+  padding: 11px 13px;
+  background: var(--primary);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+}
+.economy-store-link > span:first-child {
+  flex: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: color-mix(in srgb, #e5a43f 17%, var(--primary));
+  color: #b7741f;
+  display: grid;
+  place-items: center;
+}
+.economy-store-link > span:nth-child(2) {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.economy-store-link strong {
+  font-size: 15px;
+  line-height: 20px;
+}
+.economy-store-link small {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 16px;
+}
+.economy-store-link > .ui-icon {
+  flex: none;
+  color: var(--muted);
+}
+
+.economy-referral {
+  width: 100%;
+  margin: 12px 0 0;
+  min-height: 82px;
+  border: 1px solid var(--divider);
+  border-radius: 18px;
+  padding: 13px;
+  background: var(--primary);
+  color: var(--text);
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 11px;
+}
+.economy-referral__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  background: color-mix(in srgb, var(--accent) 12%, var(--primary));
+  color: var(--accent-text);
+}
+.economy-referral__body {
+  min-width: 0;
+}
+.economy-referral__body strong {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 15px;
+  line-height: 20px;
+}
+.economy-referral__body p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 17px;
+}
+.economy-referral__body b {
+  color: var(--text);
+  font-weight: 700;
+}
+.economy-referral > button {
+  min-height: 36px;
+  border: 0;
+  border-radius: 11px;
+  padding: 8px 12px;
+  background: var(--accent);
+  color: var(--on-accent, #fff);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 680;
+  white-space: nowrap;
+}
+@media (max-width: 390px) {
+  .economy-referral {
+    grid-template-columns: 42px minmax(0, 1fr);
+  }
+  .economy-referral > button {
+    grid-column: 2;
+    justify-self: start;
+  }
+}

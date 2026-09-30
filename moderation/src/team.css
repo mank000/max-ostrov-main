@@ -1,0 +1,155 @@
+.team-view {
+  max-width: 1140px;
+  padding: 28px;
+}
+.team-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+  align-items: start;
+  gap: 17px;
+  margin-top: 24px;
+}
+.team-card {
+  padding: 21px;
+  border: 1px solid #e0e8f2;
+  border-radius: 13px;
+  background: white;
+  box-shadow: 0 4px 22px #2a47710a;
+}
+.team-card h2 {
+  margin: 0 0 14px;
+  color: #223957;
+  font-size: 15px;
+}
+.team-muted {
+  margin: 0 0 17px;
+  color: #7e91aa;
+  font-size: 11px;
+  line-height: 1.6;
+}
+.team-members {
+  display: grid;
+  gap: 0;
+}
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 0;
+  border-top: 1px solid #edf1f6;
+}
+.team-member__avatar {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex: none;
+  border-radius: 50%;
+  background: #e6f0ff;
+  color: #176cd8;
+  font-size: 13px;
+  font-weight: 800;
+}
+.team-member > div {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+.team-member strong {
+  font-size: 12px;
+}
+.team-member small {
+  color: #8295ac;
+  font-size: 10px;
+}
+.team-member__roles {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.team-member__roles span {
+  padding: 3px 6px;
+  border-radius: 5px;
+  background: #edf4ff;
+  color: #215caa;
+  font-size: 9px;
+  font-weight: 800;
+}
+.team-member__select {
+  margin-left: auto;
+  border: 0;
+  background: transparent;
+  color: #0f64d5;
+  font-size: 11px;
+  font-weight: 800;
+}
+.team-card form {
+  display: grid;
+  gap: 10px;
+}
+.team-card input,
+.team-card select,
+.team-card textarea {
+  width: 100%;
+  border: 1px solid #d9e3f0;
+  border-radius: 9px;
+  background: white;
+  color: #223957;
+  font-size: 12px;
+}
+.team-card input,
+.team-card select {
+  height: 39px;
+  padding: 0 11px;
+}
+.team-card textarea {
+  min-height: 82px;
+  padding: 10px 11px;
+  resize: vertical;
+}
+.team-card .field-label {
+  margin-bottom: 0;
+}
+.team-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 7px 0;
+}
+.team-form-row > div {
+  display: grid;
+  gap: 7px;
+}
+.team-card .button {
+  margin-top: 6px;
+}
+.button--danger {
+  background: #b73148;
+  color: white;
+}
+.button--danger:hover:not(:disabled) {
+  background: #9b2539;
+}
+@media (max-width: 880px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+  .team-view {
+    padding: 22px;
+  }
+}
+@media (max-width: 600px) {
+  .team-view {
+    padding: 21px 14px;
+  }
+  .team-card {
+    padding: 16px;
+  }
+  .team-member {
+    align-items: flex-start;
+  }
+  .team-member__select {
+    align-self: center;
+  }
+}

@@ -1,0 +1,101 @@
+.manage-page {
+  padding: 28px;
+  overflow: auto;
+  flex: 1;
+}
+.manage-page > p {
+  color: var(--muted, #717781);
+}
+.manage-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 20px 0;
+}
+.manage-filters input {
+  flex: 1;
+  min-width: 160px;
+}
+.manage-filters input,
+.manage-filters select,
+.manage-dialog textarea {
+  border: 1px solid #d9dce3;
+  border-radius: 10px;
+  padding: 12px;
+  font: inherit;
+  background: white;
+  color: #20232a;
+}
+.manage-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid #e1e4ea;
+}
+.manage-item > div {
+  min-width: 0;
+}
+.manage-item h2 {
+  margin: 0;
+  font-size: 17px;
+}
+.manage-item p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 8px 0;
+}
+.manage-item small {
+  color: #717781;
+}
+.manage-item > button {
+  flex: none;
+}
+.manage-backdrop {
+  position: fixed;
+  inset: 0;
+  background: #0008;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+.manage-dialog {
+  width: min(100%, 480px);
+  background: white;
+  border-radius: 18px;
+  padding: 28px;
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+}
+.manage-dialog h2 {
+  margin-top: 0;
+}
+.manage-dialog textarea {
+  display: block;
+  width: 100%;
+  min-height: 100px;
+  margin: 8px 0 20px;
+}
+.manage-dialog > div {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+@media (max-width: 600px) {
+  .manage-page {
+    padding: 18px;
+  }
+  .manage-item {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .manage-page .queue-tabs {
+    overflow-x: auto;
+  }
+  .manage-page .queue-tabs button {
+    white-space: nowrap;
+  }
+}

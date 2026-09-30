@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+    <title>Карта мероприятий</title>
+    <link rel="icon" href="data:," />
+    <link rel="preconnect" href="https://tiles.openfreemap.org" crossorigin />
+    <link rel="stylesheet" href="./maplibre-gl.css" />
+    <link rel="stylesheet" href="./map.css" />
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="loading" role="status">Загрузка карты…</div>
+    <div id="status" hidden></div>
+    <div class="map-controls">
+      <button id="mode" type="button" aria-label="Объёмная карта" aria-pressed="false">3D</button>
+      <button id="compass" type="button" aria-label="Север">
+        <span>▲</span>
+      </button>
+    </div>
+    <script src="./maplibre-gl.js"></script>
+    <script type="module" src="./map.js"></script>
+  </body>
+</html>

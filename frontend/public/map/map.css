@@ -1,0 +1,150 @@
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#map {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+html,
+body {
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+body {
+  background: #f4f6f1;
+  color: #34433d;
+  font-family:
+    'Noto Sans',
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    sans-serif;
+}
+body[data-theme='dark'] {
+  background: #20292e;
+  color: #e7efeb;
+}
+#map {
+  position: absolute;
+  inset: 0;
+}
+#loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%, -50%);
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: #fff;
+  color: #34433d;
+  box-shadow: 0 8px 28px #17304224;
+  font-size: 13px;
+  white-space: nowrap;
+}
+#loading[hidden],
+#status[hidden] {
+  display: none;
+}
+#status {
+  position: absolute;
+  top: calc(50% + 30px);
+  left: 16px;
+  right: 16px;
+  z-index: 2;
+  text-align: center;
+  font-size: 12px;
+}
+.map-controls {
+  position: absolute;
+  top: 128px;
+  right: 16px;
+  z-index: 2;
+  display: grid;
+  gap: 8px;
+}
+.map-controls button {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 0;
+  border-radius: 15px;
+  background: #fff;
+  color: #34433d;
+  box-shadow: 0 8px 24px #00000018;
+  font:
+    700 13px/1 'Noto Sans',
+    system-ui,
+    sans-serif;
+}
+.map-controls button:focus-visible {
+  outline: 3px solid #2473e8;
+  outline-offset: 2px;
+}
+body[data-theme='dark'] .map-controls button {
+  background: #17181c;
+  color: #f2f2f5;
+}
+#compass span {
+  display: block;
+  color: #ec5151;
+  font-size: 22px;
+  line-height: 1;
+}
+.map-point-marker {
+  border: 3px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 3px 12px #18334455;
+  animation: map-point-in 0.16s ease-out;
+}
+@keyframes map-point-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.maplibregl-canvas,
+.maplibregl-canvas-container {
+  outline: 0;
+  touch-action: none !important;
+  overscroll-behavior: none;
+}
+.maplibregl-ctrl-bottom-left {
+  display: none;
+}
+.maplibregl-ctrl-bottom-right {
+  right: 8px;
+  bottom: 8px;
+}
+.maplibregl-ctrl-attrib {
+  background: #ffffffc9 !important;
+  border-radius: 8px 0 0;
+  font:
+    9px/1.3 system-ui,
+    sans-serif;
+}
+body[data-theme='dark'] .maplibregl-ctrl-attrib {
+  background: #20292ed9 !important;
+  color: #d9e6e2;
+}
+body[data-theme='dark'] .maplibregl-ctrl-attrib a {
+  color: inherit;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+  }
+  .map-point-marker {
+    animation: none;
+  }
+}
